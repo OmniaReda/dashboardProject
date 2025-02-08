@@ -1,0 +1,100 @@
+<div class="px-5 py-8 flex flex-col gap-3">
+  <h1 class="text-center text-[28px] font-bold text-[#012D6A]">رعاية</h1>
+  <div class="grid grid-cols-3 lg:grid-cols-1 gap-3 justify-center pt-7">
+    <div class="bg-white text-center p-4 items-center justify-center">
+      <div class="text-center mb-7">
+        <h1 class="font-bold text-[18px] text-[#012D6A]">اجمالي عدد الحالات</h1>
+        <h3 class="font-bold text-[27px] text-[#012D6A]">205</h3>
+      </div>
+      <div class="justify-items-center">
+        <canvas id="myAreaChart"></canvas>
+      </div>
+    </div>
+    <div class="bg-white text-center p-4 items-center justify-center">
+      <div class="text-center mb-7">
+        <h1 class="font-bold text-[18px] text-[#012D6A]">
+          عدد الحالات الموافق عليها
+        </h1>
+        <h3 class="font-bold text-[27px] text-[#012D6A]">190</h3>
+      </div>
+      <div class="justify-items-center">
+        <canvas id="myAreaChart2"></canvas>
+      </div>
+    </div>
+    <div class="bg-white text-center items-center flex flex-col justify-center">
+      <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
+      <div class="pie-chart-total">
+        <div class="pie-chart-total-inner justify-center content-center">
+          <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
+          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
+          <hr class="text-center m-auto w-[50%] my-3 border-2" />
+          <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
+          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">17%</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 lg:grid-cols-1 gap-3 justify-center pt-2 overflow-hidden">
+    <div class="bg-white py-8">
+      <div class="text-center mb-7">
+        <h1 class="font-bold text-[18px] text-[#012D6A]">انواع الحالات</h1>
+        <h3 class="font-bold text-[27px] text-[#012D6A]">205</h3>
+      </div>
+      <div class="grid grid-cols-4 pt-9 w-full">
+        <div class="bg-white text-center items-center justify-center border-e overflow-hidden">
+          <div class="pie-chart-1 m-auto mb-3">
+            <div class="pie-chart-inner">150</div>
+          </div>
+          <button
+            (click)="openPopup()"
+            class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+          >
+            <span class="text-[12px] flex-1 text-center">ضائقة</span>
+            <i
+              class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
+            ></i>
+          </button>
+        </div>
+        <div class="bg-white text-center items-center justify-center border-e overflow-hidden">
+          <div class="pie-chart-2 m-auto mb-3">
+            <div class="pie-chart-inner1">40</div>
+          </div>
+          <p class="text-center p-1 data">غارم محبوس</p>
+        </div>
+        <div class="bg-white text-center items-center justify-center border-e overflow-hidden">
+          <div class="pie-chart-3 m-auto mb-3">
+            <div class="pie-chart-inner2">22</div>
+          </div>
+          <p class="text-center p-1 data">غارم</p>
+        </div>
+        <div class="bg-white text-center items-center justify-center">
+          <div class="pie-chart-4 m-auto mb-3">
+            <div class="pie-chart-inner3">38</div>
+          </div>
+          <p class="text-center p-1 data h-5">مساعدة شهرية لكبار السن</p>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white px-5 py-8">
+      <div class="flex items-center justify-between mb-5">
+        <div class="flex-1"></div>
+        <div class="text-center flex-1">
+          <h1 class="font-bold text-[18px] text-[#012D6A]">الحالات المنجزة</h1>
+          <h3 class="font-bold text-[27px] text-[#012D6A]">205</h3>
+        </div>
+        <div class="flex items-center gap-x-4 flex-1 justify-end">
+          <div class="flex items-center gap-x-2">
+            <span class="w-[10px] h-[10px] rounded-full bg-black"></span>
+            <span class="text-[12px] text-[#012D6A]">علي الوقت</span>
+          </div>
+          <div class="flex items-center gap-x-2">
+            <span class="w-[10px] h-[10px] rounded-full bg-gray-600"></span>
+            <span class="text-[12px] text-[#012D6A]">متاخر</span>
+          </div>
+        </div>
+      </div>
+      <canvas id="myBarChart" class="!h-[280px] !w-full"></canvas>
+    </div>
+  </div>
+  <!--popup-->
+</div>

@@ -1,0 +1,158 @@
+<div class="px-5 py-8 flex flex-col gap-2">
+  <div class="grid grid-cols-4 lg:grid-cols-1 gap-2">
+    <div
+      class="bg-white text-center content-center items-center justify-center overflow-hidden"
+    >
+      <h2 class="text-[30px] font-bold text-[#002d6a]">رعاية</h2>
+      <p class="text-[16px] font-bold text-[#6681a6] mt-1">
+        اجمالي عدد الحالات
+      </p>
+      <h3 class="text-[30px] font-bold text-[#4aa000] my-3">
+        {{ careData.totalcare }}
+      </h3>
+      <a
+        routerLink="/care"
+        class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+      >
+        <span class="text-[12px] flex-1 text-center">المزيد</span>
+        <i class="fa-solid fa-angle-left text-[12px] relative top-[1px]"></i>
+      </a>
+    </div>
+    <div class="bg-white text-center flex-col items-center justify-center overflow-hidden">
+      <div class="pie-chart">
+        <div class="pie-chart-inner">{{ careData.calculatedValue }}</div>
+      </div>
+      <p class="text-center text-[#002d6a] mb-6">الموافق عليها</p>
+    </div>
+    <div class="bg-white text-center flex-col items-center justify-center overflow-hidden">
+      <div class="pie-chart-remaining">
+        <div class="pie-chart-inner">{{ careData.remainingValue }}</div>
+      </div>
+      <p class="text-center text-[#002d6a] mb-6">المتبقية</p>
+    </div>
+    <div class="bg-white text-center items-center flex justify-around overflow-hidden lg:flex-col lg:justify-center">
+      <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
+      <div class="pie-chart-total">
+        <div class="pie-chart-total-inner justify-center content-center">
+          <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
+          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
+          <hr class="text-center m-auto w-[50%] my-3 border-2" />
+          <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
+          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">17%</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-4 lg:grid-cols-1 gap-2">
+    <div
+      class="bg-white text-center content-center items-center justify-center overflow-hidden"
+    >
+      <h2 class="text-[30px] font-bold text-[#002d6a]">مرسال</h2>
+      <p class="text-[16px] font-bold text-[#6681a6] mt-1">اجمالي عدد الكتب</p>
+      <h3 class="text-[30px] font-bold text-[#4aa000] my-3">
+        {{ bookData.totalbook }}
+      </h3>
+      <a
+        routerLink="/mersal-details"
+        class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+      >
+        <span class="text-[12px] flex-1 text-center">المزيد</span>
+        <i class="fa-solid fa-angle-left text-[12px] relative top-[1px]"></i>
+      </a>
+    </div>
+    <div class="col-span-2 grid grid-cols-3 gap-2 justify-between overflow-hidden">
+      <div
+        class="bg-white text-center content-center items-center justify-center overflow-hidden"
+      >
+        <div class="pie-chart-incoming">
+          <div class="pie-chart-inner pie-chart-inner1">
+            {{ bookData.incomeValue }}
+          </div>
+        </div>
+        <p class="text-center text-[#002d6a] mb-6">الكتب الواردة</p>
+      </div>
+      <div
+        class="bg-white text-center content-center items-center justify-center overflow-hidden"
+      >
+        <div class="pie-chart-outgoing">
+          <div class="pie-chart-inner pie-chart-inner2">
+            {{ bookData.outgoingValue }}
+          </div>
+        </div>
+        <p class="text-center text-[#002d6a] mb-6">الكتب الصادرة</p>
+      </div>
+      <div
+        class="bg-white text-center content-center items-center justify-center overflow-hidden"
+      >
+        <div class="pie-chart-interior">
+          <div class="pie-chart-inner pie-chart-inner3">
+            {{ bookData.interiorValue }}
+          </div>
+        </div>
+        <p class="text-center text-[#002d6a] mb-6">الكتب الداخلية</p>
+      </div>
+    </div>
+    <div class="bg-white text-center items-center flex justify-around overflow-hidden lg:flex-col lg:justify-center">
+      <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
+      <div class="pie-chart-total">
+        <div class="pie-chart-total-inner justify-center content-center">
+          <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
+          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
+          <hr class="text-center m-auto w-[50%] my-3 border-2" />
+          <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
+          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">17%</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-4 lg:grid-cols-1 gap-2">
+    <div
+      class="bg-white text-center content-center items-center justify-center overflow-hidden"
+    >
+      <h2 class="text-[30px] font-bold text-[#002d6a]">موارد</h2>
+      <p class="text-[16px] font-bold text-[#6681a6] mt-1">
+        اجمالي عدد الطلبات
+      </p>
+      <h3 class="text-[30px] font-bold text-[#4aa000] my-3">
+        {{ resourcesData.totalresource }}
+      </h3>
+      <a
+        routerLink="/care-details"
+        class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+      >
+        <span class="text-[12px] flex-1 text-center">المزيد</span>
+        <i class="fa-solid fa-angle-left text-[12px] relative top-[1px]"></i>
+      </a>
+    </div>
+    <div
+      class="bg-white text-center content-center items-center justify-center overflow-hidden"
+    >
+      <div class="pie-chart-specialization">
+        <div class="pie-chart-inner">
+          {{ resourcesData.specializationValue }}
+        </div>
+      </div>
+      <p class="text-center text-[#002d6a] mb-6">الطلبات التخصصية</p>
+    </div>
+    <div
+      class="bg-white text-center content-center items-center justify-center overflow-hidden"
+    >
+      <div class="pie-chart-radio">
+        <div class="pie-chart-inner">{{ resourcesData.radioValue }}</div>
+      </div>
+      <p class="text-center text-[#002d6a] mb-6">الطلبات الاذاعية</p>
+    </div>
+    <div class="bg-white text-center items-center flex justify-around overflow-hidden lg:flex-col lg:justify-center">
+      <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
+      <div class="pie-chart-total">
+        <div class="pie-chart-total-inner justify-center content-center">
+          <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
+          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
+          <hr class="text-center m-auto w-[50%] my-3 border-2" />
+          <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
+          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">17%</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

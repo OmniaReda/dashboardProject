@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Style Scroll App */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Body App */
+
+* {
+  font-family: "Cairo", sans-serif;
+}
+
+body {
+  font-family: "Cairo", sans-serif !important;
+}
+
+.over-scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+  contain: size style layout;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: transparent !important;
+  box-shadow: initial !important;
+}

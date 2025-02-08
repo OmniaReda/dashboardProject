@@ -1,0 +1,33 @@
+<div class="bg-[#012D6A] w-full flex items-center justify-between p-2">
+  <div class="flex items-center gap-x-5">
+    <div class="image">
+      <img src="assets/img/i-logo.png" class="pr-2 lg:w-full sm:w-full" />
+    </div>
+    <div class="flex items-center gap-x-5">
+      <button
+        *ngIf="currentPage !== '/'"
+        class="text-white rounded-full bg-[#234178] flex items-center justify-center w-[33px] h-[33px]"
+        (click)="goBack()"
+      >
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+      <h1 class="text-white text-[25px] font-bold">
+        {{
+          currentPage === "/care-details" || currentPage === "/care"
+            ? "قيادة - رعاية"
+            : currentPage === "/mersal-details"
+            ? "قيادة - مرسال"
+            : "قيادة"
+        }}
+      </h1>
+    </div>
+  </div>
+  <div
+    class="relative bg-[#345788] rounded-[7px] py-3 px-4 flex items-center gap-x-2 w-[500px] me-4"
+  >
+    <i
+      class="search-icon fas fa-search text-white text-[13px] relative top-[2px]"
+    ></i>
+    <input type="search" class="bg-transparent text-white" placeholder="بحث" />
+  </div>
+</div>
