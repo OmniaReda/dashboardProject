@@ -9,6 +9,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
   styleUrl: './popup-details.component.css',
 })
 export class PopupDetailsComponent implements OnInit{
+  loading=false;
   chart: any;
   isFlipped:any = false;
 
@@ -33,7 +34,7 @@ export class PopupDetailsComponent implements OnInit{
   }
 
   flipSection(bar:any) {
-      this.isFlipped = !this.isFlipped
+     // this.isFlipped = !this.isFlipped
 
     this.chart.destroy()
     this.data=  {
@@ -86,6 +87,13 @@ export class PopupDetailsComponent implements OnInit{
       
   }
 
+  this.loader()
  this.createDoughnutChart()
+}
+loader(){
+  this.loading = true
+   setTimeout(() => {
+     this.loading = false;
+   }, 2000)
 }
 }

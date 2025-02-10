@@ -1,5 +1,5 @@
-<div class="bg-white parent-container" [ngClass]="{ 'flipped': isFlipped }">
-  <div [ngClass]="{ 'flipper': isFlipped }">
+<div class="bg-white parent-container" >
+  <app-loading-pages *ngIf="loading"></app-loading-pages>
     <div
       class="border-b-2 py-5 px-3 flex items-center justify-between border-[#f5f7fa]"
     >
@@ -71,5 +71,7 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
+
+
+<!-- Loading Pages -->
