@@ -219,7 +219,7 @@ export class CareComponent implements OnInit {
               'rgb(128 150 180)',
             ],
             borderWidth: 1,
-            barThickness: 8,
+            barThickness: 15,
             maxBarThickness:10,
             minBarLength:6,
             barPercentage: 0.5, 
@@ -234,7 +234,7 @@ export class CareComponent implements OnInit {
             backgroundColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
             borderColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
             borderWidth: 1,
-            barThickness: 8,
+            barThickness: 15,
             maxBarThickness:10,
             minBarLength:6,
             barPercentage: 0.5, 
@@ -248,10 +248,18 @@ export class CareComponent implements OnInit {
         responsive: true,
         maintainAspectRatio: false,
         devicePixelRatio: 4,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
+        layout: {
+          padding: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0
+          }
+      },
+          plugins: {
+            legend: {
+              position:'top',
+            }
         },
         scales: {
           x: {
@@ -266,20 +274,25 @@ export class CareComponent implements OnInit {
                 ? 6
                 : 10,
                 family:"cairo",
-                lineHeight:2
+                lineHeight:1,
+                style:"initial"
               },
-              
             },
           },
           y: {
             position: 'right',
             beginAtZero: true,
             ticks: {
-             
               font: {
-                size: 12,
+                size: window.innerWidth < 526
+                ? 4
+                : window.innerWidth < 990
+                ? 6
+                : 10,
+                family:"cairo",
+                lineHeight:1,
+                style:"normal"
               },
-              
             },
           
           },
