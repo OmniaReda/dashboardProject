@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables, scales } from 'chart.js';
 import { MatDialog } from '@angular/material/dialog';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { PopupDetailsComponent } from '../popup-details/popup-details.component';
@@ -139,38 +139,6 @@ export class CareComponent implements OnInit {
       },
     ],
   };
-  barChartData = {
-    labels: ['مساعدة شهرية لكبار السن', 'غارم', 'غارم محبوس', 'ضائقة'],
-    datasets: [
-      {
-        label: 'المتأخرة',
-        data: [13, 7, 10, 30],
-        backgroundColor: [
-          'rgb(194 221 235)',
-          'rgb(221 155 155) ',
-          'rgb(223 208 174)',
-          'rgb(128 150 180)',
-        ],
-        borderColor: [
-          'rgb(194 221 235)',
-          'rgb(221 155 155) ',
-          'rgb(223 208 174)',
-          'rgb(128 150 180)',
-        ],
-        borderWidth: 1,
-        barThickness: 15,
-      },
-      {
-        label: 'علي الوقت',
-        data: [25, 15, 30, 120],
-        backgroundColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
-        borderColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
-        borderWidth: 1,
-        barThickness: 20,
-      },
-    ],
-  };
-
   createChart() {
     this.chart = new Chart('myAreaChart', {
       type: 'line',
@@ -231,9 +199,47 @@ export class CareComponent implements OnInit {
   createBarChart() {
     this.chart = new Chart('myBarChart', {
       type: 'bar',
-      data: this.barChartData,
+      data: {
+        labels: ['مساعدة شهرية لكبار السن', 'غارم', 'غارم محبوس', 'ضائقة'],
+        datasets: [
+          {
+            barPercentage:0.8,
+            categoryPercentage:0.9,
+            label: 'المتأخرة',
+            data: [38, 58, 65, 55],
+            backgroundColor: [
+              'rgb(194 221 235)',
+              'rgb(221 155 155) ',
+              'rgb(223 208 174)',
+              'rgb(128 150 180)',
+            ],
+            borderColor: [
+              'rgb(194 221 235)',
+              'rgb(221 155 155) ',
+              'rgb(223 208 174)',
+              'rgb(128 150 180)',
+            ],
+            borderWidth: 1,
+            barThickness: 10,
+          },
+          {
+            barPercentage:0.8,
+            categoryPercentage:0.9,
+
+            label: 'علي الوقت',
+            data: [58, 85, 99, 90],
+            backgroundColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
+            borderColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
+            borderWidth: 1,
+            barThickness: 10,
+          },
+          
+        ],
+      
+      },
       options: {
         responsive: true,
+        
         plugins: {
           legend: {
             position: 'top',
@@ -258,11 +264,13 @@ export class CareComponent implements OnInit {
           y: {
             position: 'right',
             beginAtZero: true,
+            
             ticks: {
               font: {
                 size: 12,
               },
             },
+          
           },
         },
       },
