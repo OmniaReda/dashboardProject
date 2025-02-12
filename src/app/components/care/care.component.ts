@@ -203,10 +203,9 @@ export class CareComponent implements OnInit {
         labels: ['مساعدة شهرية لكبار السن', 'غارم', 'غارم محبوس', 'ضائقة'],
         datasets: [
           {
-            barPercentage:0.8,
-            categoryPercentage:0.9,
             label: 'المتأخرة',
             data: [38, 58, 65, 55],
+           
             backgroundColor: [
               'rgb(194 221 235)',
               'rgb(221 155 155) ',
@@ -220,18 +219,26 @@ export class CareComponent implements OnInit {
               'rgb(128 150 180)',
             ],
             borderWidth: 1,
-            barThickness: 10,
-          },
+            barThickness: 8,
+            maxBarThickness:10,
+            minBarLength:6,
+            barPercentage: 0.5, 
+            categoryPercentage:1 ,
+           },
           {
-            barPercentage:0.8,
-            categoryPercentage:0.9,
+            
 
             label: 'علي الوقت',
+           
             data: [58, 85, 99, 90],
             backgroundColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
             borderColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
             borderWidth: 1,
-            barThickness: 10,
+            barThickness: 8,
+            maxBarThickness:10,
+            minBarLength:6,
+            barPercentage: 0.5, 
+            categoryPercentage:1 ,
           },
           
         ],
@@ -239,7 +246,8 @@ export class CareComponent implements OnInit {
       },
       options: {
         responsive: true,
-        
+        maintainAspectRatio: false,
+        devicePixelRatio: 4,
         plugins: {
           legend: {
             position: 'top',
@@ -252,23 +260,26 @@ export class CareComponent implements OnInit {
             },
             ticks: {
               font: {
-                size:
-                  window.innerWidth < 526
-                    ? 4
-                    : window.innerWidth < 990
-                    ? 6
-                    : 10,
+                size: window.innerWidth < 526
+                ? 4
+                : window.innerWidth < 990
+                ? 6
+                : 10,
+                family:"cairo",
+                lineHeight:2
               },
+              
             },
           },
           y: {
             position: 'right',
             beginAtZero: true,
-            
             ticks: {
+             
               font: {
                 size: 12,
               },
+              
             },
           
           },
