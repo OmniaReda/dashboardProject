@@ -1,0 +1,170 @@
+<div class="h-screen bg-[#022d6a] overflow-y-auto hidden sm:block">
+  <div class="p-5">
+    <div class="flex items-center justify-between">
+      <button
+        class="w-[35px] h-[35px] flex items-center justify-center rounded-full bg-[#1b4279]"
+      >
+        <i class="fa-solid fa-chevron-right text-white"></i>
+      </button>
+      <h5 class="text-white flex-1 text-center">JBM/2023/4234234</h5>
+      <a
+        routerLink="/edit-profile"
+        class="w-[35px] h-[35px] flex items-center justify-center rounded-full bg-[#1b4279]"
+      >
+        <img src="/assets/icons/edit.svg" class="max-w-[16px]" alt="" />
+      </a>
+    </div>
+    <div class="text-center my-5">
+      <h5 class="text-main text-[20px] font-bold">محمد سعدون</h5>
+      <h6 class="text-main text-[12px] mt-2">432423423</h6>
+    </div>
+  </div>
+  <div class="bg-[#f6f7fa] rounded-ss-[50px] rounded-se-[50px] h-screen p-6">
+    <div class="flex items-center justify-between">
+      <div class="flex-1 text-center">
+        <h4 class="text-[#022d6a] text-[17px] font-bold">ضائقة</h4>
+        <h5 class="text-[#6781a5] text-[13px] mt-2">نوع الحالة</h5>
+      </div>
+      <span class="h-[60px] w-[1px] bg-[#022d6a]"></span>
+      <div class="flex-1 text-center">
+        <h4 class="text-[#022d6a] text-[17px] font-bold">عادي</h4>
+        <h5 class="text-[#6781a5] text-[13px] mt-2">نوع الطلب</h5>
+      </div>
+    </div>
+    <div class="py-6">
+      <div class="bg-white rounded-lg p-4 mb-3 flex items-center gap-5">
+        <img src="/assets/icons/call.svg" class="w-[23px]" alt="" />
+        <div class="">
+          <h4 class="text-[#264060] text-[12px] font-bold">رقم الهاتف</h4>
+          <h5 class="text-[#8e99a8] text-[13px] mt-2" style="direction: ltr">
+            +97432423423423
+          </h5>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg p-4 mb-3 flex items-center gap-5">
+        <img src="/assets/icons/email.svg" class="w-[23px]" alt="" />
+        <div class="">
+          <h4 class="text-[#264060] text-[12px] font-bold">
+            البريد الالكتروني
+          </h4>
+          <h5 class="text-[#8e99a8] text-[13px] mt-2" style="direction: ltr">
+            +email_gmail.com
+          </h5>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg p-4 mb-3 flex items-center gap-5">
+        <img src="/assets/icons/info.svg" class="w-[23px]" alt="" />
+        <div class="">
+          <h4 class="text-[#264060] text-[12px] font-bold">وصف الحالة</h4>
+          <h5 class="text-[#8e99a8] text-[13px] mt-2" style="direction: ltr">
+            كتابه معروض طلب اعانه من موقع اوراقي خدمات
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="flex items-center justify-between">
+        <h5 class="text-[#042d65] text-[15px] font-bold lgSM:text-[13px]">
+          المرفقات
+        </h5>
+        <a routerLink="/files" class="flex items-center gap-2">
+          <span class="text-[#324b6f] text-[13px] lgSM:text-[11px]"
+            >المزيد</span
+          >
+          <i class="fa-solid fa-angle-left text-[#324b6f]"></i>
+        </a>
+      </div>
+      <div class="flex items-center gap-3 my-4 overflow-x-auto">
+        <div class="text-center" (click)="toggleAction('setting')">
+          <div
+            class="w-[100px] h-[100px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+          >
+            <img src="/assets/icons/pdf.svg" class="max-w-[65px]" alt="" />
+          </div>
+          <h4
+            class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+          >
+            تقرير اجتماعي.pdf
+          </h4>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-[100px] h-[100px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+          >
+            <img src="/assets/icons/docx.svg" class="max-w-[65px]" alt="" />
+          </div>
+          <h4
+            class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+          >
+            تقرير اجتماعي.docx
+          </h4>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-[100px] h-[100px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+          >
+            <img src="/assets/icons/xlsx.svg" class="max-w-[65px]" alt="" />
+          </div>
+          <h4
+            class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+          >
+            تقرير اجتماعي.xlsx
+          </h4>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-[100px] h-[100px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+          >
+            <img src="/assets/icons/pdf.svg" class="max-w-[65px]" alt="" />
+          </div>
+          <h4
+            class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+          >
+            تقرير اجتماعي.pdf
+          </h4>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-[100px] h-[100px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+          >
+            <img src="/assets/icons/docx.svg" class="max-w-[65px]" alt="" />
+          </div>
+          <h4
+            class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+          >
+            تقرير اجتماعي.docx
+          </h4>
+        </div>
+        <div class="text-center">
+          <div
+            class="w-[100px] h-[100px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+          >
+            <img src="/assets/icons/xlsx.svg" class="max-w-[65px]" alt="" />
+          </div>
+          <h4
+            class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+          >
+            تقرير اجتماعي.xlsx
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  (click)="toggleAction('mail')"
+  class="fixed bottom-0 right-0 w-full h-[50px] flex items-center justify-center text-white bg-[#042d65]"
+>
+  <img src="/assets/icons/sent-mail.svg" class="max-w-[25px]" alt="" />
+</button>
+
+<app-mail-sent
+  [open]="openMailSent"
+  (openChange)="openMailSent = $event"
+></app-mail-sent>
+
+<app-setting-iphone
+  [openSetting]="openSetting"
+  (openClose)="openSetting = $event"
+></app-setting-iphone>

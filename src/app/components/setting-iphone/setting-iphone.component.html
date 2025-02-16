@@ -1,0 +1,29 @@
+<div
+  class="fixed z-[99] bottom-0 right-0 w-full h-full rounded-ss-lg rounded-se-lg translate-y-[100%] transition duration-700 ease-in-out"
+  [class.!translate-y-0]="openSetting"
+>
+  <!-- Body -->
+  <div class="relative h-screen w-full overflow-hidden">
+    <div (click)="toggleAction()" class="bg-black/[60%] absolute top-0 right-0 w-full h-full"></div>
+    <div class="absolute bottom-0 right-0 w-full bg-[#042d65] rounded-ss-[20px] rounded-se-[20px]">
+      <a href="" class="text-white text-[15px] block p-5 border-b border-[#3a6198] text-center"
+        >موافقة</a
+      >
+      <a href="" class="text-white text-[15px] block p-5 border-b border-[#3a6198] text-center"
+        >رفض</a
+      >
+      <a href="" class="text-white text-[15px] block p-5 border-b border-[#3a6198] text-center"
+        >الإجراء</a
+      >
+      <a href="" class="text-white text-[15px] block p-5 border-b border-[#3a6198] text-center"
+        >إرسال إلي مرسال</a
+      >
+      <a href="" class="text-white text-[15px] block p-5 border-b border-[#3a6198] text-center"
+        >إرسال عبر البريد</a
+      >
+      <a href="" class="text-white text-[15px] block p-5 text-center"
+        >ارشفة</a
+      >
+    </div>
+  </div>
+</div>

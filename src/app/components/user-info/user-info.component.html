@@ -1,0 +1,136 @@
+<div
+  class="fixed z-[99] bottom-0 right-0 w-full h-full bg-white rounded-ss-lg rounded-se-lg p-6 translate-y-[100%] transition duration-700 ease-in-out"
+  [class.!translate-y-0]="open"
+>
+  <!-- Head Files -->
+  <div class="flex items-center justify-center flex-col gap-y-7">
+    <button
+      (click)="toggleAction()"
+      class="flex items-center justify-center flex-col gap-1"
+    >
+      <span class="bg-[#022d6a] h-[1px] w-[25px] block"></span>
+      <span class="bg-[#022d6a] h-[1px] w-[15px] block"></span>
+    </button>
+    <h5 class="text-[#042d65] text-[15px] text-center font-bold">البياتات</h5>
+  </div>
+  <!-- List Files -->
+  <form
+    action=""
+    class="max-w-[720px] m-auto my-[100px] grid grid-cols-2 gap-9"
+  >
+    <div class="relative">
+      <input
+        type="text"
+        required
+        id="name"
+        name="name"
+        value="محمد عوض حسين"
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-4 text-[12px] outline-none"
+      />
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >الاسم</label
+      >
+    </div>
+    <div class="relative">
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[-12px] z-[99] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >نوع الخدمة</label
+      >
+      <select
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-5 text-[12px] outline-none"
+      >
+        <option value="" selected>عادي</option>
+        <option value="">مكثف</option>
+        <option value="">عالي</option>
+      </select>
+      <i
+        class="fa-solid fa-angle-down text-[#94b6e4] absolute top-[50%] translate-y-[-50%] rtl:left-[10px] ltr:right-[10px]"
+      ></i>
+    </div>
+    <div class="relative">
+      <input
+        type="text"
+        required
+        id="name"
+        name="name"
+        value="0100184343434"
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-4 text-[12px] outline-none"
+      />
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >رقم الهاتف</label
+      >
+    </div>
+    <div class="relative">
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[-12px] z-[99] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >نوع الطلب</label
+      >
+      <select
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-5 text-[12px] outline-none"
+      >
+        <option value="" selected>عادي</option>
+        <option value="">مكثف</option>
+        <option value="">عالي</option>
+      </select>
+      <i
+        class="fa-solid fa-angle-down text-[#94b6e4] absolute top-[50%] translate-y-[-50%] rtl:left-[10px] ltr:right-[10px]"
+      ></i>
+    </div>
+    <div class="relative">
+      <input
+        type="text"
+        required
+        id="name"
+        name="name"
+        value="info@gmail.com"
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-4 text-[12px] outline-none"
+      />
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >البريد الالكتروني</label
+      >
+    </div>
+    <div class="relative">
+      <input
+        type="text"
+        required
+        id="name"
+        name="name"
+        value="محمد عوض حسين"
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-4 text-[12px] outline-none"
+      />
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >وصف الحالة</label
+      >
+    </div>
+    <div class="relative">
+      <input
+        type="text"
+        required
+        id="name"
+        name="name"
+        value="4234234234234423"
+        class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#022d6a] px-4 text-[12px] outline-none"
+      />
+      <label
+        for="name"
+        class="absolute bg-white py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#022d6a] text-[12px]"
+        >رقم البطاقة الشخصية</label
+      >
+    </div>
+    <button
+      class="w-full h-[50px] bg-main text-[#f5f7fa] rounded-md font-bold text-[12px]"
+    >
+      حفظ
+    </button>
+  </form>
+</div>

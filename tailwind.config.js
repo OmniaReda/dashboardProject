@@ -4,14 +4,19 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        // MAX
         "2lg": { max: "2000px" },
         lg: { max: "1024px" },
+        lgSM: { max: "860px" },
         md: { max: "767px" },
-        sm: { max: "500px" },
-        xs: { max: "410px" },
+        sm: { max: "480px" },
+        // MIN
+        lgMin: { min: "1025px" },
+        mdMin: { min: "767px" },
       },
       colors: {
         primary: "#fb6d3a",
+        main: "#bfa25d",
         secondary: "#000",
       },
     },

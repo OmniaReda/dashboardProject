@@ -1,0 +1,16 @@
+<div
+  class="flex items-center justify-between bg-[#bfa25d] p-3 fixed bottom-0 right-0 w-full z-[99]"
+>
+  <a routerLink="/imported" [class.opacity-[50%]]="name !== 'imported'" class="flex-1 flex items-center justify-center flex-col">
+    <img src="/assets/icons/t-mail.svg" alt="" class="w-[20px]" />
+    <span class="text-white font-bold text-[10px] mt-1">الوارد</span>
+  </a>
+  <a routerLink="/dashboard" [class.opacity-[50%]]="name !== 'dashboard'" class="flex-1 flex items-center justify-center flex-col">
+    <img src="/assets/icons/roll.svg" alt="" class="w-[20px]" />
+    <span class="text-white font-bold text-[10px] mt-1">لوحة القيادة</span>
+  </a>
+  <a routerLink="/sender" [class.opacity-[50%]]="name !== 'sender'" class="flex-1 flex items-center justify-center flex-col">
+    <img src="/assets/icons/send.svg" alt="" class="w-[20px]" />
+    <span class="text-white font-bold text-[10px] mt-1">المرسل</span>
+  </a>
+</div>
