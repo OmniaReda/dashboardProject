@@ -222,14 +222,11 @@ export class CareComponent implements OnInit {
             barThickness: 15,
             maxBarThickness:10,
             minBarLength:6,
-            barPercentage: 0.5, 
-            categoryPercentage:1 ,
            },
           {
             
 
             label: 'علي الوقت',
-           
             data: [58, 85, 99, 90],
             backgroundColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
             borderColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
@@ -237,67 +234,30 @@ export class CareComponent implements OnInit {
             barThickness: 15,
             maxBarThickness:10,
             minBarLength:6,
-            barPercentage: 0.5, 
-            categoryPercentage:1 ,
           },
           
         ],
-      
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        devicePixelRatio: 4,
-        layout: {
-          padding: {
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0
-          }
-      },
-          plugins: {
-            legend: {
-              position:'top',
-            }
-        },
         scales: {
-          x: {
-            grid: {
-              display: false,
-            },
-            ticks: {
-              font: {
-                size: window.innerWidth < 526
-                ? 4
-                : window.innerWidth < 990
-                ? 6
-                : 10,
-                family:"cairo",
-                lineHeight:1,
-                style:"initial"
-              },
-            },
-          },
           y: {
-            position: 'right',
-            beginAtZero: true,
-            ticks: {
-              font: {
-                size: window.innerWidth < 526
-                ? 4
-                : window.innerWidth < 990
-                ? 6
-                : 10,
-                family:"cairo",
-                lineHeight:1,
-                style:"normal"
-              },
-            },
-          
+            beginAtZero:true,
+            position:'right',
+            
+            ticks:{ font:{
+              size: 20,
+          }}
           },
-        },
-      },
-    });
-  }
+          x: {
+            position :'right',
+            ticks: {
+              font:{
+                size: 25,
+            }
+          }
+          }
+        }
+      }
+    
+    })}
 }

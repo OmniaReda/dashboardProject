@@ -13,6 +13,7 @@ import { PopupDetailsComponent } from './components/popup-details/popup-details.
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoadingPagesComponent } from './components/loading-pages/loading-pages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoadingPagesComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule, AppRoutingModule],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(),provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
