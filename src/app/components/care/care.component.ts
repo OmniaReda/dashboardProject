@@ -264,7 +264,12 @@ export class CareComponent implements OnInit {
             }
           }
           }
-        }
+        },
+        plugins: {
+          legend: {
+             display: false
+          }
+       }
       }
     
     })}

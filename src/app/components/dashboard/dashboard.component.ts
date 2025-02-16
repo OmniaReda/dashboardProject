@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Chart, registerables, scales } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
+  chart: any;
   careData = {
     totalcare: 205,
     percentage: 0.88,
@@ -23,9 +25,13 @@ export class DashboardComponent {
     interiorValue: 0,
   };
 
-  constructor() {
+  constructor( ) {
+    Chart.register(...registerables)
     this.calculatecare();
     this.calculatebook();
+  }
+  ngOnInit(): void {
+    this.createBarChart();
   }
 
   calculatecare() {
@@ -50,4 +56,70 @@ export class DashboardComponent {
       this.bookData.totalbook * this.bookData.interiorpercentage
     );
   }
+    createBarChart() {
+      this.chart = new Chart('myBarChart', {
+        type: 'bar',
+        data: {
+          labels: [ 'قيد المتابعة', 'منجز',"مرفوض"],
+          datasets: [
+            {
+              data: [65, 50, 35],
+              label:"علي الوقت",
+              backgroundColor: [
+                'green',
+                'green ',
+                'green',
+              ],
+              borderColor: [
+                'green',
+                'green ',
+                'green',
+              ],
+              borderWidth: 1,
+              barThickness: 15,
+              maxBarThickness:10,
+              minBarLength:6,
+             },
+            {
+              label:"المتأخره",
+
+              data: [35, 45, 25],
+              backgroundColor: [
+                'red',
+                'red ',
+                'red',
+              ],
+              borderColor: [
+                'red',
+                'red ',
+                'red',
+              ],
+              borderWidth: 1,
+              barThickness: 15,
+              maxBarThickness:10,
+              minBarLength:6,
+            },
+            
+          ],
+        },
+        options: {
+          indexAxis: 'y',
+          scales: {
+            y: {
+              position:'right',
+             
+            },
+            x: {
+              position :'right',
+              
+            }
+          },
+          plugins: {
+            legend: {
+               display: false
+            }
+         }
+        }
+      
+      })}
 }
