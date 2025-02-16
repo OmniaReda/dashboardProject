@@ -245,14 +245,22 @@ export class CareComponent implements OnInit {
             position:'right',
             
             ticks:{ font:{
-              size: 20,
+              size: window.innerWidth < 526
+                ? 10
+                : window.innerWidth < 990
+                ? 15
+                : 20,
           }}
           },
           x: {
             position :'right',
             ticks: {
               font:{
-                size: 25,
+                size: window.innerWidth < 526
+                ? 10
+                : window.innerWidth < 990
+                ? 15
+                : 20,
             }
           }
           }
