@@ -14,7 +14,7 @@
   height: fit-content;
   border-radius: 100%;
   border: white 5px solid;
-  background: conic-gradient(#012d6a 0% 83%, #bb3837 84% 100%);
+  background: conic-gradient(#012d6a 0% var(--first), #bb3837 var(--first) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +101,7 @@
   height: 222.9px;
   border-radius: 100%;
   border: white 1px solid;
-  background: conic-gradient(#012d6a 0% 83%, #bb3837 84% 100%);
+  background: conic-gradient(#012d6a 0% var(--first), #bb3837 var(--first) 100%);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -3,6 +3,8 @@ import { Chart, registerables, scales } from 'chart.js';
 import { MatDialog } from '@angular/material/dialog';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { PopupDetailsComponent } from '../popup-details/popup-details.component';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-care',
@@ -12,13 +14,22 @@ import { PopupDetailsComponent } from '../popup-details/popup-details.component'
 export class CareComponent implements OnInit {
   chart: any;
   showPopup: boolean = false;
-  constructor(public dialog: MatDialog) {
+  loading=true;
+  careData:any={}
+  CasesCountByMonth:any
+  AgreedCasesCountByMonth :any
+  requestsTypes:any;
+  mongz:any="50%";
+  constructor(public dialog: MatDialog,private http:HttpClient) {
     Chart.register(...registerables);
+    this.getData();
+
   }
   ngOnInit(): void {
-    this.createChart();
-    this.createBarChart();
+    this.getData();
+
   }
+  
 
   openPopup() {
     let dialogRef = this.dialog.open(PopupDetailsComponent, {
@@ -81,68 +92,11 @@ export class CareComponent implements OnInit {
     });
   }
 
-  data = {
-    labels: [
-      'JAN',
-      'FEB',
-      'MAR',
-      'APR',
-      'MAY',
-      'JUN',
-      'JUL',
-      'AUG',
-      'SEP',
-      'OCT',
-      'NOV',
-      'DEC',
-    ],
-    datasets: [
-      {
-        label: '',
-        data: [
-          90, 80, 90, 120, 120, 102, 95, 90, 99, 93, 190, 180, 80, 75, 85, 95,
-        ],
-        backgroundColor: 'rgb(128 150 180)',
-        borderColor: '#012D6A',
-        fill: true, //
-        pointRadius: 0, //
-        pointHoverRadius: 0,
-      },
-    ],
-  };
-  data2 = {
-    labels: [
-      'JAN',
-      'FEB',
-      'MAR',
-      'APR',
-      'MAY',
-      'JUN',
-      'JUL',
-      'AUG',
-      'SEP',
-      'OCT',
-      'NOV',
-      'DEC',
-    ],
-    datasets: [
-      {
-        label: '',
-        data: [55, 45, 60, 57, 59, 67, 75, 102, 95, 85, 89, 93],
-        backgroundColor: 'rgb(128 150 180)',
-        borderColor: '#012D6A',
-        drawActiveElementsOnTop: false,
-
-        fill: true, //
-        pointRadius: 0, //
-        pointHoverRadius: 0,
-      },
-    ],
-  };
+ 
   createChart() {
     this.chart = new Chart('myAreaChart', {
       type: 'line',
-      data: this.data,
+      data: this.CasesCountByMonth,
       options: {
         maintainAspectRatio: false,
         aspectRatio: 3 | 2,
@@ -169,7 +123,7 @@ export class CareComponent implements OnInit {
     });
     this.chart = new Chart('myAreaChart2', {
       type: 'line',
-      data: this.data2,
+      data: this.AgreedCasesCountByMonth,
       options: {
         maintainAspectRatio: false,
         aspectRatio: 3 | 2,
@@ -273,4 +227,58 @@ export class CareComponent implements OnInit {
       }
     
     })}
+
+    getData(){
+      this.http.get("https://bc288e91-0c6b-46a3-be5f-d11533efe491.mock.pstmn.io/api-gateway-odoo/api/Dashboard/Header").subscribe((res:any)=>{
+        this.careData= res.Result
+        this.mongz= (this.careData.CasesOnTime*100).toString() + '%'
+        this.loading =false;
+        this.handleChartsData();
+        this.createChart();
+        this.createBarChart();
+        this.getRequestsType()   
+
+         })
+    }
+
+    handleChartsData(){
+    this.AgreedCasesCountByMonth=  {
+        labels: this.careData.AgreedCasesCountByMonth.map((res:any)=> res.Key),
+        datasets: [
+          {
+            label: '',
+            data: this.careData.AgreedCasesCountByMonth.map((res:any)=> res.Value),
+            backgroundColor: 'rgb(128 150 180)',
+            borderColor: '#012D6A',
+            drawActiveElementsOnTop: false,
+    
+            fill: true, //
+            pointRadius: 0, //
+            pointHoverRadius: 0,
+          },
+        ],
+      };
+    
+    this.CasesCountByMonth = {
+      labels: this.careData.CasesCountByMonth.map((res:any)=> res.Key),
+      datasets: [
+        {
+          label: '',
+          data:  this.careData.CasesCountByMonth.map((res:any)=> res.Value),
+          backgroundColor: 'rgb(128 150 180)',
+          borderColor: '#012D6A',
+          fill: true, //
+          pointRadius: 0, //
+          pointHoverRadius: 0,
+        },
+      ],
+    };
+  }
+  getRequestsType(){
+    this.http.get("https://bc288e91-0c6b-46a3-be5f-d11533efe491.mock.pstmn.io/api-gateway-odoo/api/Dashboard/RequestTypes").subscribe((res:any)=>{
+    console.log(res)
+    this.requestsTypes = res.Result
+    })
+  }
+  
 }

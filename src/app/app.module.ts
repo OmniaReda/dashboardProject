@@ -27,6 +27,7 @@ import { ProfileIphoneComponent } from './components/profile-iphone/profile-ipho
 import { SettingIphoneComponent } from './components/setting-iphone/setting-iphone.component';
 import { EditProfileIphoneComponent } from './components/edit-profile-iphone/edit-profile-iphone.component';
 import { FilesIphoneComponent } from './components/files-iphone/files-iphone.component';
+import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,8 +52,8 @@ import { FilesIphoneComponent } from './components/files-iphone/files-iphone.com
     EditProfileIphoneComponent,
     FilesIphoneComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule, AppRoutingModule],
-  providers: [provideClientHydration(),provideCharts(withDefaultRegisterables())],
+  imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule, AppRoutingModule,HttpClientModule],
+  providers: [provideClientHydration(),provideCharts(withDefaultRegisterables()),HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
