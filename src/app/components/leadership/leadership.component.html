@@ -8,7 +8,7 @@
         اجمالي عدد الحالات
       </p>
       <h3 class="text-[30px] font-bold text-[#4aa000] my-3">
-        {{ careData.totalcare }}
+        {{ careData.CasesCount }}
       </h3>
       <a
         routerLink="/care"
@@ -19,26 +19,26 @@
       </a>
     </div>
     <div class="bg-white text-center flex-col items-center justify-center overflow-hidden">
-      <div class="pie-chart">
-        <div class="pie-chart-inner">{{ careData.calculatedValue }}</div>
+      <div class="pie-chart-completed" style="--completed: {{completedCasesPercentage}}">
+        <div class="pie-chart-inner">{{ careData.CompletedCasesCount }}</div>
       </div>
       <p class="text-center text-[#002d6a] mb-6">الموافق عليها</p>
     </div>
     <div class="bg-white text-center flex-col items-center justify-center overflow-hidden">
-      <div class="pie-chart-remaining">
-        <div class="pie-chart-inner">{{ careData.remainingValue }}</div>
+      <div class="pie-chart-remaining" style="--remaining: {{remainingCasesPercentage}}">
+        <div class="pie-chart-inner">{{ careData.CasesCount - careData.CompletedCasesCount }}</div>
       </div>
       <p class="text-center text-[#002d6a] mb-6">المتبقية</p>
     </div>
     <div class="bg-white text-center items-center flex justify-around overflow-hidden lg:flex-col lg:justify-center">
       <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
-      <div class="pie-chart-total">
-        <div class="pie-chart-total-inner justify-center content-center">
+      <div class="pie-chart-ontime" style="--ontime: {{casesOnTimePercentage}}">
+        <div class="pie-chart-ontime-inner justify-center content-center">
           <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
-          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
+          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">{{careData.CasesOnTime * 100}}%</h3>
           <hr class="text-center m-auto w-[50%] my-3 border-2" />
           <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
-          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">17%</h3>
+          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">{{careData.CasesDelayed * 100}}%</h3>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
       <div
         class="bg-white text-center content-center items-center justify-center overflow-hidden"
       >
-        <div class="pie-chart-incoming">
+        <div class="pie-chart-incoming" style="--incoming: {{bookData.incomepercentage}}">
           <div class="pie-chart-inner pie-chart-inner1">
             {{ bookData.incomeValue }}
           </div>
@@ -74,7 +74,7 @@
       <div
         class="bg-white text-center content-center items-center justify-center overflow-hidden"
       >
-        <div class="pie-chart-outgoing">
+        <div class="pie-chart-outgoing" style="--outgoing: {{bookData.outgoingPercentage}}">
           <div class="pie-chart-inner pie-chart-inner2">
             {{ bookData.outgoingValue }}
           </div>
@@ -84,7 +84,7 @@
       <div
         class="bg-white text-center content-center items-center justify-center overflow-hidden"
       >
-        <div class="pie-chart-interior">
+        <div class="pie-chart-interior" style="--interior: {{bookData.interiorpercentage}}">
           <div class="pie-chart-inner pie-chart-inner3">
             {{ bookData.interiorValue }}
           </div>
@@ -94,13 +94,13 @@
     </div>
     <div class="bg-white text-center items-center flex justify-around overflow-hidden lg:flex-col lg:justify-center">
       <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
-      <div class="pie-chart-total">
-        <div class="pie-chart-total-inner justify-center content-center">
+      <div class="pie-chart-book" style="--book: {{bookData.onTimePercentage}}">
+        <div class="pie-chart-book-inner justify-center content-center">
           <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
-          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
+          <h3 class="text-center text-[#002d6a] font-bold text-[23px]">{{bookData.onTimePercentage}}</h3>
           <hr class="text-center m-auto w-[50%] my-3 border-2" />
           <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
-          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">17%</h3>
+          <h3 class="text-center text-[#b43c3a] font-bold text-[23px]">{{bookData.delayedPercentage}}</h3>
         </div>
       </div>
     </div>
@@ -144,8 +144,8 @@
     </div>
     <div class="bg-white text-center items-center flex justify-around overflow-hidden lg:flex-col lg:justify-center">
       <h2 class="text-[#002d6a] font-bold text-[18px]">الحالات المنجزة</h2>
-      <div class="pie-chart-total">
-        <div class="pie-chart-total-inner justify-center content-center">
+      <div class="pie-chart-resources" style="--resources: 83%">
+        <div class="pie-chart-resources-inner justify-center content-center">
           <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
           <h3 class="text-center text-[#002d6a] font-bold text-[23px]">83%</h3>
           <hr class="text-center m-auto w-[50%] my-3 border-2" />

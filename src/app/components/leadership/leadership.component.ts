@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DashboardService } from "../../services/dashboard.service";
 
 @Component({
   selector: 'app-leadership',
@@ -6,22 +7,31 @@ import { Component } from '@angular/core';
   styleUrl: './leadership.component.css'
 })
 export class LeadershipComponent {
+  dashboardService: DashboardService = inject(DashboardService);
   careData = {
-    totalcare: 205, 
-    percentage: 0.88, 
-    calculatedValue: 0, 
-    remainingPercentage: 0,
-    remainingValue:  0,
+    CasesCount: 0, 
+    CompletedCasesCount: 0, 
+    ApplierCount: 0, 
+    CasesOnTime: 0.0, 
+    CasesDelayed: 0.0
   };
+
+  completedCasesPercentage = '0%';
+  remainingCasesPercentage = '0%';
+  casesOnTimePercentage = '0%';
 
   bookData = {
     totalbook: 205, 
-    incomepercentage: 0.498, 
+    incomepercentage: '0%', 
     incomeValue: 0, 
-    outgoingPercentage: 0.22,
+    outgoingPercentage: '0%',
     outgoingValue:  0,
-    interiorpercentage:0,
-    interiorValue:0
+    interiorpercentage:'0%',
+    interiorValue:0,
+    onTimePercentage:'0%',
+    delayedPercentage:'0%',
+    onTime:0,
+    delayed:0
   };
   resourcesData = {
     totalresource: 1049, 
@@ -32,22 +42,86 @@ export class LeadershipComponent {
   };
 
   constructor() {
-    this.calculatecare(); 
-    this.calculatebook();
+    this.dashboardService.getHeaderStatistics().then((list: any) => {
+      console.log(list.Result);
+      if (list.Result)
+      {
+        this.careData = list.Result;
+        this.completedCasesPercentage = Math.round(this.careData.CompletedCasesCount / this.careData.CasesCount * 100).toString() + '%';
+        this.remainingCasesPercentage = Math.round((this.careData.CasesCount - this.careData.CompletedCasesCount) / this.careData.CasesCount * 100).toString() + '%';
+        this.casesOnTimePercentage = (this.careData.CasesOnTime * 100).toString() + '%';
+      }
+    });
+
+    this.dashboardService.getIncoming().then((incoming: any) => {
+      this.dashboardService.getOutgoing().then((outgoing: any) => {
+        this.dashboardService.getInternal().then((internal: any) => {
+        
+          console.log(incoming);
+          console.log(outgoing);
+          console.log(internal);
+          
+          this.bookData.totalbook = 0;
+          this.bookData.incomeValue = 0;
+          this.bookData.outgoingValue = 0;
+          this.bookData.interiorValue = 0;
+
+          incoming.dataReports.forEach((income: any,index:any) => {
+            income.data.forEach((incomeData:any)=>{
+              this.bookData.totalbook += incomeData;
+              this.bookData.incomeValue += incomeData;
+              if (index == 0) {
+                this.bookData.onTime += incomeData;
+              } else {
+                this.bookData.delayed += incomeData;
+              }
+            })
+          });
+
+          outgoing.dataReports.forEach((outgo: any,index:any) => {
+            outgo.data.forEach((outgoData:any)=>{
+              this.bookData.totalbook += outgoData;
+              this.bookData.outgoingValue += outgoData;
+              if (index == 0) {
+                this.bookData.onTime += outgoData;
+              } else {
+                this.bookData.delayed += outgoData;
+              }
+            })
+          });
+
+          internal.dataReports.forEach((intern: any,index:any) => {
+            intern.data.forEach((internData:any)=>{
+              this.bookData.totalbook += internData;
+              this.bookData.interiorValue += internData;
+              if (index == 0) {
+                this.bookData.onTime += internData;
+              } else {
+                this.bookData.delayed += internData;
+              }
+            })
+          });
+          
+          
+          this.bookData.incomepercentage = Math.round(this.bookData.incomeValue / this.bookData.totalbook * 100).toString() + '%';  
+          this.bookData.outgoingPercentage = Math.round(this.bookData.outgoingValue / this.bookData.totalbook * 100).toString() + '%';  
+          this.bookData.interiorpercentage = Math.round(this.bookData.interiorValue / this.bookData.totalbook * 100).toString() + '%';  
+
+          this.bookData.delayedPercentage = Math.round(this.bookData.delayed / this.bookData.totalbook * 100).toString() + '%';  
+          this.bookData.onTimePercentage = Math.round(this.bookData.onTime / this.bookData.totalbook * 100).toString() + '%';                      
+
+        });
+      });
+    });
+    
+    
+
+
+    
+    
     this.calculateresource();
   }
 
-  calculatecare() {
-    this.careData.calculatedValue = Math.round(this.careData.totalcare * this.careData.percentage); // 180
-    this.careData.remainingPercentage = 1 - this.careData.percentage; // 0.13
-    this.careData.remainingValue = this.careData.totalcare - this.careData.calculatedValue; // 25
-  }
-  calculatebook() {
-    this.bookData.incomeValue = Math.round(this.bookData.totalbook * this.bookData.incomepercentage); 
-    this.bookData.outgoingValue = Math.round(this.bookData.totalbook * this.bookData.outgoingPercentage);
-    this.bookData.interiorpercentage = 1 - this.bookData.incomepercentage - this.bookData.outgoingPercentage; 
-    this.bookData.interiorValue = Math.round(this.bookData.totalbook *this.bookData.interiorpercentage);
-  }
   calculateresource() {
     this.resourcesData.specializationValue = Math.round(this.resourcesData.totalresource * this.resourcesData.specializationpercentage); 
     this.resourcesData.radioPercentage = 1 - this.resourcesData.specializationValue; 
