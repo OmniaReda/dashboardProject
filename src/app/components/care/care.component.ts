@@ -148,126 +148,6 @@ export class CareComponent implements OnInit {
         },
       },
     };
-    // let dialogRef = this.dialog.open(PopupDetailsComponent, {
-    //   width: '90%',
-    //   maxWidth: '90vw',
-    //   data: {
-    //     popupDetails: {
-    //       title: 'ضائقة',
-    //       subTitle: 'انواع طلبات الضائقة',
-    //       total: '205',
-    //       progressBars: [
-    //         {
-    //           title: 'مساعدة الزواج',
-    //           count: 50,
-    //           p1: { color: '#012D6A', count: '33' },
-    //           p2: { color: '#7d91b1', count: '27' },
-    //         },
-    //         {
-    //           title: 'مساعدة مسكن',
-    //           count: 19,
-    //           p1: { color: '#85BBD7', count: '33' },
-    //           p2: { color: '#85BBD7', count: '27' },
-    //         },
-    //         {
-    //           title: 'مصاريف العلاج',
-    //           count: 1,
-    //           p1: { color: '#d6d6d4', count: '33' },
-    //           p2: { color: '#e5e6e8', count: '27' },
-    //         },
-    //         {
-    //           title: ' مساعدات الدراسة',
-    //           count: 30,
-    //           p1: { color: '#b86139', count: '33' },
-    //           p2: { color: '#d5ab97', count: '27' },
-    //         },
-    //         {
-    //           title: ' مشاريع الاسرة المنتجة',
-    //           count: 25,
-    //           p1: { color: '#bda15e', count: '33' },
-    //           p2: { color: '#d9ccab', count: '27' },
-    //         },
-    //         {
-    //           title: 'مساعدات المقطوعة',
-    //           count: 25,
-    //           p1: { color: '#545452', count: '33' },
-    //           p2: { color: '#a4a6a5', count: '27' },
-    //         },
-    //       ],
-    //     },
-    //     chartOptions: {
-    //       type: 'doughnut',
-    //       data: {
-    //         labels: [''],
-    //         datasets: [
-    //           {
-    //             label: 'عدد الحالات',
-    //             data: [50, 30, 19, 25, 1, 25],
-    //             backgroundColor: [
-    //               '#012D6A',
-    //               '#BB6038',
-    //               '#85BBD8',
-    //               '#C0A25D',
-    //               '#D6D6D6',
-    //               '#545453',
-    //             ],
-    //             borderColor: [
-    //               '#012D6A',
-    //               '#BB6038',
-    //               '#85BBD8',
-    //               '#C0A25D',
-    //               '#D6D6D6',
-    //               '#545453',
-    //             ],
-    //             hoverBackgroundColor: [
-    //               '#012D6A',
-    //               '#BB6038',
-    //               '#85BBD8',
-    //               '#C0A25D',
-    //               '#D6D6D6',
-    //               '#545453',
-    //             ],
-    //             hoverBorderColor: [
-    //               '#012D6A',
-    //               '#BB6038',
-    //               '#85BBD8',
-    //               '#C0A25D',
-    //               '#D6D6D6',
-    //               '#545453',
-    //             ],
-    //             hoverBorderWidth: 16,
-    //           },
-    //         ],
-    //       },
-    //       options: {
-    //         responsive: true,
-    //         plugins: {
-    //           legend: {
-    //             position: 'top',
-    //           },
-    //           datalabels: {
-    //             color: '#fff',
-    //             formatter: (value: number, ctx: any) => value,
-    //             font: {
-    //               weight: 'bold',
-    //               size:
-    //                 window.innerWidth < 526
-    //                   ? 12
-    //                   : window.innerWidth < 990
-    //                   ? 16
-    //                   : 20,
-    //             },
-    //             textAlign: 'center',
-    //           },
-    //         },
-    //       },
-    //     },
-    //   },
-    // });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log('The dialog was closed', result);
-    // });
   }
 
   createChart() {
@@ -322,6 +202,8 @@ export class CareComponent implements OnInit {
             grid: {
               display: false,
             },
+            suggestedMin: 0,
+            suggestedMax: 100,
           },
         },
       },
@@ -331,7 +213,12 @@ export class CareComponent implements OnInit {
     this.chart = new Chart('myBarChart', {
       type: 'bar',
       data: {
-        labels: ['مساعدة شهرية لكبار السن', 'غارم', 'غارم محبوس', 'ضائقة'],
+        labels: this.wrapLabels([
+          'مساعدة شهرية لكبار السن',
+          'غارم',
+          'غارم محبوس',
+          'ضائقة',
+        ]),
         datasets: [
           {
             label: 'المتأخرة',
@@ -394,6 +281,7 @@ export class CareComponent implements OnInit {
                     ? 15
                     : 20,
               },
+              color: '#012D6A',
             },
           },
         },
@@ -406,26 +294,13 @@ export class CareComponent implements OnInit {
     });
   }
 
-  // getData(){
-  //   this.http.get("https://bc288e91-0c6b-46a3-be5f-d11533efe491.mock.pstmn.io/api-gateway-odoo/api/Dashboard/Header").subscribe((res:any)=>{
-  //     this.careData= res.Result
-  //     this.mongz= (this.careData.CasesOnTime*100).toString() + '%'
-  //     this.loading =false;
-  //     this.handleChartsData();
-  //     this.createChart();
-  //     this.createBarChart();
-  //     this.getRequestsType()
-
-  //      })
-  // }
-
   getData() {
     this.loading = true;
 
     // Fetch dashboard header data with fallback to mock data
     this.http
       .get(
-        'https://bc288e91-0c6b-46a3-be5f-d11533efe491.mock.pstmn.io/api-gateway-odoo/api/Dashboard/Header'
+        'https://78e85d90-4d6b-4c15-86c8-7303cc6a33a3.mock.pstmn.io/api-gateway-odoo/api/Dashboard/Header'
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {
@@ -480,21 +355,11 @@ export class CareComponent implements OnInit {
       ],
     };
   }
-  // getRequestsType() {
-  //   this.http
-  //     .get(
-  //       'https://bc288e91-0c6b-46a3-be5f-d11533efe491.mock.pstmn.io/api-gateway-odoo/api/Dashboard/RequestTypes'
-  //     )
-  //     .subscribe((res: any) => {
-  //       console.log(res);
-  //       this.requestsTypes = res.Result;
-  //     });
-  // }
 
   getRequestsType() {
     this.http
       .get(
-        'https://bc288e91-0c6b-46a3-be5f-d11533efe491.mock.pstmn.io/api-gateway-odoo/api/Dashboard/RequestTypes'
+        'https://78e85d90-4d6b-4c15-86c8-7303cc6a33a3.mock.pstmn.io/api-gateway-odoo/api/Dashboard/RequestTypes'
       )
       .pipe(
         catchError((error: HttpErrorResponse) => {
@@ -512,5 +377,32 @@ export class CareComponent implements OnInit {
 
   handleFlipSectionEvent($event: any) {
     this.bar = $event;
+  }
+
+  wrapLabels(labels: string[]): string[][] {
+    return labels.map((label) => {
+      if (label.length <= 12) {
+        return [label];
+      }
+
+      const words = label.split(' ');
+      let currentLine = '';
+      const wrappedLines: string[] = [];
+
+      words.forEach((word) => {
+        if ((currentLine + ' ' + word).trim().length <= 12) {
+          currentLine += (currentLine ? ' ' : '') + word;
+        } else {
+          wrappedLines.push(currentLine.trim());
+          currentLine = word;
+        }
+      });
+
+      if (currentLine) {
+        wrappedLines.push(currentLine.trim());
+      }
+
+      return wrappedLines;
+    });
   }
 }
