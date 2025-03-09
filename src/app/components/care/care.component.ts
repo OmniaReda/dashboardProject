@@ -389,10 +389,10 @@ export class CareComponent implements OnInit {
               font: {
                 size:
                   window.innerWidth < 526
-                    ? 10
+                    ? 20
                     : window.innerWidth < 990
-                    ? 15
-                    : 20,
+                    ? 20
+                    : 15,
               },
             },
           },
