@@ -1,0 +1,17 @@
+.parent-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform .7s ease-in-out;
+  overflow: hidden;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.flipper {
+  transform: rotateY(-180deg);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform .7s ease-in-out;
+}

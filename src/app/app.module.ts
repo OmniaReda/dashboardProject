@@ -27,7 +27,14 @@ import { ProfileIphoneComponent } from './components/profile-iphone/profile-ipho
 import { SettingIphoneComponent } from './components/setting-iphone/setting-iphone.component';
 import { EditProfileIphoneComponent } from './components/edit-profile-iphone/edit-profile-iphone.component';
 import { FilesIphoneComponent } from './components/files-iphone/files-iphone.component';
-import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  provideHttpClient,
+} from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { HardshipComponent } from './components/hardship/hardship.component';
+import { HardshipBarComponent } from './components/hardship-bar/hardship-bar.component';
 
 @NgModule({
   declarations: [
@@ -51,9 +58,22 @@ import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common
     SettingIphoneComponent,
     EditProfileIphoneComponent,
     FilesIphoneComponent,
+    HardshipComponent,
+    HardshipBarComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, MatDialogModule, AppRoutingModule,HttpClientModule],
-  providers: [provideClientHydration(),provideCharts(withDefaultRegisterables()),HttpClient],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    AppRoutingModule,
+    CommonModule,
+    HttpClientModule,
+  ],
+  providers: [
+    provideClientHydration(),
+    provideCharts(withDefaultRegisterables()),
+    HttpClient,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

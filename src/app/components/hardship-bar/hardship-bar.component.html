@@ -1,0 +1,75 @@
+@if (hardshipBarData) {
+<div class="bg-white parent-container">
+  <div
+    class="border-b-2 py-5 px-3 flex items-center justify-center border-[#f5f7fa]"
+  >
+    <h2 class="font-bold text-[#012D6A] text-[26px]">
+      {{ hardshipBarData?.popupDetails.title }}
+    </h2>
+  </div>
+  <div class="flex lg:flex-col p-8">
+    <div class="w-[40%] lg:w-full">
+      <div class="flex items-center justify-center gap-x-5 mb-12">
+        <h1 class="text-[#012D6A] text-[16px]">
+          {{ hardshipBarData?.popupDetails.subTitle }}
+        </h1>
+        <h3 class="text-[#012D6A] font-bold text-[25px]">
+          {{ hardshipBarData?.popupDetails.total }}
+        </h3>
+      </div>
+      <div class="p-4">
+        <canvas
+          id="popupDoughnutChart"
+          class="!w-[90%] !h-[90%] m-auto"
+        ></canvas>
+      </div>
+    </div>
+    <div class="w-[60%] lg:w-full">
+      <div class="flex items-center gap-x-4 justify-end mb-12">
+        <div class="flex items-center gap-x-2">
+          <span class="w-[10px] h-[10px] rounded-full bg-black"></span>
+          <span class="text-[12px] text-[#012D6A]">علي الوقت</span>
+        </div>
+        <div class="flex items-center gap-x-2">
+          <span class="w-[10px] h-[10px] rounded-full bg-gray-600"></span>
+          <span class="text-[12px] text-[#012D6A]">متاخر</span>
+        </div>
+      </div>
+      <div
+        *ngFor="
+          let bar of hardshipBarData?.popupDetails.progressBars;
+          let i = index
+        "
+        (click)="flipSection(bar)"
+        class="bg-[#f5f7fa] rounded-[10px] py-1.5 px-4 flex items-center mb-4 cursor-pointer"
+      >
+        <div class="flex items-center gap-x-3">
+          <div class="w-[10px] h-[10px] rounded-full bg-[#0e2c67]"></div>
+          <p class="text-[#707f96] font-bold w-[145px] text-[15px]">
+            {{ bar.title }}
+          </p>
+        </div>
+        <h3 class="text-[#012D6A] font-bold text-[19px] w-[110px] text-center">
+          {{ bar.count }}
+        </h3>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-x-3">
+            <div
+              class="w-[350px] h-[10px]"
+              [ngStyle]="{ 'background-color': bar.p1.color }"
+            ></div>
+            <h1 class="text-[#012D6A] font-bold">{{ bar.p1.count }}</h1>
+          </div>
+          <div class="flex items-center gap-x-3">
+            <div
+              class="w-[250px] h-[10px] opacity-50"
+              [ngStyle]="{ 'background-color': bar.p1.color }"
+            ></div>
+            <h1 class="text-[#012D6A] font-bold">{{ bar.p2.count }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
