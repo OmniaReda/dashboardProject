@@ -57,6 +57,10 @@
             <div
               class="w-[350px] h-[10px]"
               [ngStyle]="{ 'background-color': bar.p1.color }"
+              [routerLink]="['/hardship-bar-table']"
+              [queryParams]="{ bar: bar.p1.count, title: bar.title }"
+            
+
             ></div>
             <!-- routerLink="/hardship-bar-table?bar={{ bar.p1.count }}&title={{
                 bar.title
@@ -67,6 +71,9 @@
             <div
               class="w-[250px] h-[10px] opacity-50"
               [ngStyle]="{ 'background-color': bar.p1.color }"
+              [routerLink]="['/hardship-bar-table']"
+              [queryParams]="{ bar: bar.p2.count, title: bar.title }"
+
             ></div>
             <!-- routerLink="/hardship-bar-table?bar={{ bar.p2.count }}&title={{
                 bar.title

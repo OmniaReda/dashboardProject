@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-hardship-bar-table',
@@ -8,13 +8,19 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HardshipBarTableComponent implements OnInit {
   careDetails = false;
-
-  constructor(private router: Router) {
+  barValue: number | null = null;
+  title: string | null = null;
+  constructor(private router: Router, private route: ActivatedRoute) {
     // this.careDetails = this.router.
   }
   ngOnInit() {
     this.router.events.subscribe((event: any) => {
       this.careDetails = event!.routerEvent?.url == '/care-details';
+    });
+
+    this.route.queryParams.subscribe((params) => {
+      this.barValue = params['bar'];
+      this.title = params['title'];
     });
   }
 }

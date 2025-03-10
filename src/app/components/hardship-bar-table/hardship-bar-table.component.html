@@ -1,7 +1,8 @@
+
 <div class="p-5 h-screen overflow-y-auto" *ngIf="careDetails">
-  <h4 class="font-bold text-[22px] text-center text-[#012D6A] my-5">
+  <!-- <h4 class="font-bold text-[22px] text-center text-[#012D6A] my-5">
     إحصائيات الطلبات المتأخرة 124
-  </h4>
+  </h4> -->
   <div class="relative overflow-x-auto bg-white rounded-lg">
     <table class="w-full text-sm">
       <thead class="text-white uppercase bg-[#012D6A]">
@@ -312,8 +313,7 @@
 
 <div class="p-5 h-screen overflow-y-auto" *ngIf="!careDetails">
   <h4 class="font-bold text-[22px] text-center text-[#012D6A] my-5">
-    عدد اكتب قيد التنفيذ - الماخرة 49
-  </h4>
+    {{ barValue }} - {{ title }}  </h4>
   <div class="relative overflow-x-auto bg-white rounded-lg">
     <table class="w-full text-sm">
       <thead class="text-white uppercase bg-[#012D6A]">
