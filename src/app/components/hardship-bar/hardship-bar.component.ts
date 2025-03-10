@@ -1,14 +1,13 @@
-import { Component, Inject, Input, OnChanges, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-hardship-bar',
   templateUrl: './hardship-bar.component.html',
-  styleUrl: './hardship-bar.component.css',
+  styleUrls: ['./hardship-bar.component.css'],
 })
-export class HardshipBarComponent implements OnInit, OnChanges {
+export class HardshipBarComponent implements OnInit, OnChanges, OnDestroy {
   loading = false;
   chart: any;
   isFlipped: any = false;
@@ -16,21 +15,32 @@ export class HardshipBarComponent implements OnInit, OnChanges {
   @Input() barSpecifications: any;
 
   constructor() {
-    Chart.register(...registerables);
+    Chart.register(...registerables, ChartDataLabels);
   }
 
   ngOnInit(): void {}
 
-  ngOnChanges(simpleChanges: any) {
+  ngOnChanges(simpleChanges: any): void {
     if (simpleChanges?.barSpecifications?.currentValue) {
-      this.createDoughnutChart();
       this.flipSection(simpleChanges.barSpecifications.currentValue);
     }
   }
 
-  createDoughnutChart() {
+  ngOnDestroy(): void {
+    this.destroyChart();
+  }
+
+  destroyChart(): void {
+    if (this.chart) {
+      this.chart.destroy();
+      this.chart = null;
+    }
+  }
+
+  createDoughnutChart(): void {
     if (this.hardshipBarData && this.hardshipBarData.chartOptions) {
-      Chart.register(ChartDataLabels);
+      this.destroyChart();
+
       this.chart = new Chart(
         'popupDoughnutChart',
         this.hardshipBarData.chartOptions
@@ -38,9 +48,8 @@ export class HardshipBarComponent implements OnInit, OnChanges {
     }
   }
 
-  flipSection(bar: any) {
-    if (this.chart) this.chart.destroy();
-
+  flipSection(bar: any): void {
+    console.log(bar);
     this.hardshipBarData = {
       popupDetails: {
         title: bar.title,
@@ -146,7 +155,7 @@ export class HardshipBarComponent implements OnInit, OnChanges {
     this.createDoughnutChart();
   }
 
-  loader() {
+  loader(): void {
     this.loading = true;
     setTimeout(() => {
       this.loading = false;

@@ -35,7 +35,55 @@ export class CareComponent implements OnInit {
     this.getData();
   }
 
+  // handleButtonClick(): void {
+  //   setTimeout(() => {
+  //     this.scrollToSections3(['sec3']);
+  //     this.scrollToSection2('sec2');
+  //   }, 0);
+  //   this.openPopup();
+  // }
+  // scrollToSection2(sectionId: string): void {
+  //   const element = document.getElementById(sectionId);
+  //   if (element) {
+  //     setTimeout(() => {
+  //       element.scrollIntoView({ behavior: 'smooth' });
+  //     }, 0);
+  //   }
+  // }
+
+  // scrollToSections3(sectionIds: string[]): void {
+  //   sectionIds.forEach((sectionId, index) => {
+  //     setTimeout(() => {
+  //       const element = document.getElementById(sectionId);
+  //       if (element) {
+  //         element.scrollIntoView({ behavior: 'smooth' });
+  //       }
+  //     }, 0);
+  //   });
+  // }
+
+  private scrollTimeout: any;
+
+  scrollToSection(sectionId: string): void {
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
+
+    this.scrollTimeout = setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 0);
+  }
+
+  handleButtonClick(sectionId: string): void {
+    this.scrollToSection(sectionId);
+    this.openPopup();
+  }
+
   openPopup() {
+    // this.scrollToSection('sec2');
     this.hardshipData = {
       popupDetails: {
         title: 'ضائقة',

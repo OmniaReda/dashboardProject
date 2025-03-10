@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Style Scroll App */
 ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 20px;
+  height: 20px; 
 }
+
+::-webkit-scrollbar-thumb {
+  background-color: #012D6A; 
+  /* border-radius: 10px;  */
+}
+
+
 
 /* Body App */
 

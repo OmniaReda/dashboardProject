@@ -66,12 +66,13 @@
             </div>
           </div>
           <button
-            (click)="openPopup()"
+          (click)="handleButtonClick('sec2')"
+      
             class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
           >
-            <span class="text-[12px] flex-1 text-center">{{
-              requestsTypes?.DataReports[0]?.Label
-            }}</span>
+            <span class="text-[12px] flex-1 text-center">
+              {{requestsTypes?.DataReports[0]?.Label}}
+            </span>
             <i
               class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
             ></i>
@@ -138,7 +139,7 @@
   </div>
   <!--popup-->
   @if (hardshipData) {
-  <div class="flex justify-center">
+  <div class="flex justify-center" id="sec2" >
     <a (click)="hardshipData = null; bar = null">
       <i
         class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
@@ -148,16 +149,17 @@
   <app-hardship
     [hardshipData]="hardshipData"
     (flipSectionEvent)="handleFlipSectionEvent($event)"
-  />
+    (click)="handleButtonClick('sec3')"
+    />
   } @if (bar) {
-  <div class="flex justify-center">
-    <a (click)="bar = null">
+  <div class="flex justify-center" id="sec3" >
+    <a (click)="bar = null"   >
       <i
         class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
       ></i>
     </a>
   </div>
 
-  <app-hardship-bar [barSpecifications]="bar" />
+  <app-hardship-bar [barSpecifications]="bar"   />
   }
 </div>
