@@ -10,6 +10,7 @@ import { SenderComponent } from './components/sender/sender.component';
 import { ProfileIphoneComponent } from './components/profile-iphone/profile-iphone.component';
 import { EditProfileIphoneComponent } from './components/edit-profile-iphone/edit-profile-iphone.component';
 import { FilesIphoneComponent } from './components/files-iphone/files-iphone.component';
+import { HardshipBarTableComponent } from './components/hardship-bar-table/hardship-bar-table.component';
 
 const routes: Routes = [
   { path: '', component: LeadershipComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileIphoneComponent },
   { path: 'edit-profile', component: EditProfileIphoneComponent },
   { path: 'files', component: FilesIphoneComponent },
+  { path: 'hardship-bar-table', component: HardshipBarTableComponent },
 ];
 
 @NgModule({

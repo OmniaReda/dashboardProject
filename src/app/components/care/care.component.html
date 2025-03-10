@@ -37,7 +37,7 @@
         <div class="pie-chart-total-inner justify-center content-center">
           <p class="text-center text-[#798aa3] text-[14px]">علي الوقت</p>
           <h3 class="text-center text-[#002d6a] font-bold text-[23px]">
-            {{ careData.CasesOnTime * 100 }}%
+            {{ careData.CasesOnTime * 100 | number : "1.0-0" }}%
           </h3>
           <hr class="text-center m-auto w-[50%] my-3 border-2" />
           <p class="text-center text-[#798aa3] text-[14px]">مع تأخير</p>
@@ -62,7 +62,7 @@
         >
           <div class="pie-chart-1 m-auto mb-3">
             <div class="pie-chart-inner">
-              {{ requestsTypes.DataReports[0].Data }}
+              {{ requestsTypes?.DataReports[0]?.Data }}
             </div>
           </div>
           <button
@@ -70,7 +70,7 @@
             class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
           >
             <span class="text-[12px] flex-1 text-center">{{
-              requestsTypes.DataReports[0].Label
+              requestsTypes?.DataReports[0]?.Label
             }}</span>
             <i
               class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
@@ -82,11 +82,11 @@
         >
           <div class="pie-chart-2 m-auto mb-3">
             <div class="pie-chart-inner1">
-              {{ requestsTypes.DataReports[1].Data }}
+              {{ requestsTypes?.DataReports[1]?.Data }}
             </div>
           </div>
           <p class="text-center p-1 data">
-            {{ requestsTypes.DataReports[1].Label }}
+            {{ requestsTypes?.DataReports[1]?.Label }}
           </p>
         </div>
         <div
@@ -94,21 +94,21 @@
         >
           <div class="pie-chart-3 m-auto mb-3">
             <div class="pie-chart-inner2">
-              {{ requestsTypes.DataReports[2].Data }}
+              {{ requestsTypes?.DataReports[2]?.Data }}
             </div>
           </div>
           <p class="text-center p-1 data">
-            {{ requestsTypes.DataReports[2].Label }}
+            {{ requestsTypes?.DataReports[2]?.Label }}
           </p>
         </div>
         <div class="bg-white text-center items-center justify-center">
           <div class="pie-chart-4 m-auto mb-3">
             <div class="pie-chart-inner3">
-              {{ requestsTypes.DataReports[3].Data }}
+              {{ requestsTypes?.DataReports[3]?.Data }}
             </div>
           </div>
           <p class="text-center p-1 data h-5">
-            {{ requestsTypes.DataReports[3].Label }}
+            {{ requestsTypes?.DataReports[3]?.Label }}
           </p>
         </div>
       </div>

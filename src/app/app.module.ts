@@ -35,6 +35,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { HardshipComponent } from './components/hardship/hardship.component';
 import { HardshipBarComponent } from './components/hardship-bar/hardship-bar.component';
+import { HardshipBarTableComponent } from './components/hardship-bar-table/hardship-bar-table.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { HardshipBarComponent } from './components/hardship-bar/hardship-bar.com
     FilesIphoneComponent,
     HardshipComponent,
     HardshipBarComponent,
+    HardshipBarTableComponent,
   ],
   imports: [
     BrowserModule,

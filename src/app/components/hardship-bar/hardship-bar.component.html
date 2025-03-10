@@ -58,6 +58,9 @@
               class="w-[350px] h-[10px]"
               [ngStyle]="{ 'background-color': bar.p1.color }"
             ></div>
+            <!-- routerLink="/hardship-bar-table?bar={{ bar.p1.count }}&title={{
+                bar.title
+              }}" -->
             <h1 class="text-[#012D6A] font-bold">{{ bar.p1.count }}</h1>
           </div>
           <div class="flex items-center gap-x-3">
@@ -65,6 +68,9 @@
               class="w-[250px] h-[10px] opacity-50"
               [ngStyle]="{ 'background-color': bar.p1.color }"
             ></div>
+            <!-- routerLink="/hardship-bar-table?bar={{ bar.p2.count }}&title={{
+                bar.title
+              }}" -->
             <h1 class="text-[#012D6A] font-bold">{{ bar.p2.count }}</h1>
           </div>
         </div>
