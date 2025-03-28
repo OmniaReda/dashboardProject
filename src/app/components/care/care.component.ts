@@ -4,8 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { PopupDetailsComponent } from '../popup-details/popup-details.component';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, finalize, Observable, Subject } from 'rxjs';
+import { catchError, finalize } from 'rxjs';
 import { MockDataService } from '../../mocks/mock-care.service';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-care',
@@ -23,11 +25,12 @@ export class CareComponent implements OnInit {
   hardshipData: any;
   bar: any;
   mongz: any = '50%';
+  requestsTypesTime:any;
   constructor(
     public dialog: MatDialog,
     private http: HttpClient,
-    private mockDataService: MockDataService
-  ) {
+    private mockDataService: MockDataService,
+     private route:Router) {
     Chart.register(...registerables);
     this.getData();
   }
@@ -261,17 +264,14 @@ export class CareComponent implements OnInit {
     this.chart = new Chart('myBarChart', {
       type: 'bar',
       data: {
-        labels: this.wrapLabels([
-          'مساعدة شهرية لكبار السن',
-          'غارم',
-          'غارم محبوس',
-          'ضائقة',
-        ]),
+        labels: this.wrapLabels(this.requestsTypesTime.Labels),
         datasets: [
-          {
-            label: 'المتأخرة',
-            data: [38, 58, 65, 55],
-
+          { 
+            label:  this.requestsTypesTime.DataReports[1].Label,
+            data: this.requestsTypesTime.DataReports[1].Data,
+            hoverBackgroundColor: ['#012D6A', '#BB6038','#85BBD8','#C0A25D','#D6D6D6','#545453'],
+            hoverBorderColor:['#012D6A', '#BB6038','#85BBD8','#C0A25D','#D6D6D6','#545453'],
+            hoverBorderWidth:16,
             backgroundColor: [
               'rgb(194 221 235)',
               'rgb(221 155 155) ',
@@ -290,10 +290,13 @@ export class CareComponent implements OnInit {
             minBarLength: 6,
           },
           {
-            label: 'علي الوقت',
-            data: [58, 85, 99, 90],
+            label: this.requestsTypesTime.DataReports[0].Label,
+            data: this.requestsTypesTime.DataReports[0].Data,
             backgroundColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
             borderColor: ['#85BBD8', '#BB3837', '#BFA25D', '#012D6A'],
+            hoverBackgroundColor: ['#012D6A', '#BB6038','#85BBD8','#C0A25D','#D6D6D6','#545453'],
+            hoverBorderColor:['#012D6A', '#BB6038','#85BBD8','#C0A25D','#D6D6D6','#545453'],
+            hoverBorderWidth:16,
             borderWidth: 1,
             barThickness: 15,
             maxBarThickness: 10,
@@ -302,7 +305,16 @@ export class CareComponent implements OnInit {
         ],
       },
       options: {
-        scales: {
+        onClick: (e, item,chartines)=> {
+          console.log(item)
+          if (item.length) {
+            const data = chartines.data.datasets[item[0].datasetIndex].data[item[0].index];
+            const index = chartines.data.datasets[item[0].datasetIndex].label;
+            const label = item[0].index;
+            console.log( data,label,index);
+            this.navigateTODetails(item[0].index,chartines.data.datasets[item[0].datasetIndex].label!='متأخرة',data)
+          }},
+             scales: {
           y: {
             beginAtZero: true,
             position: 'right',
@@ -335,22 +347,17 @@ export class CareComponent implements OnInit {
         },
         plugins: {
           legend: {
-            display: false,
-          },
-        },
-      },
-    });
+             display: false
+          }
+       },
+      
+      
+    }
+    })
   }
-
-  getData() {
-    this.loading = true;
-
-    // Fetch dashboard header data with fallback to mock data
-    this.http
-      .get(
-        'https://78e85d90-4d6b-4c15-86c8-7303cc6a33a3.mock.pstmn.io/api-gateway-odoo/api/Dashboard/Header'
-      )
-      .pipe(
+    
+    getData(){
+      this.http.get("https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/Header").pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error fetching dashboard data:', error);
           return this.mockDataService.getMockDashboardHeaderData();
@@ -358,19 +365,36 @@ export class CareComponent implements OnInit {
         finalize(() => {
           this.getRequestsType();
         })
-      )
-      .subscribe((res: any) => {
-        this.careData = res.Result;
-        this.mongz = (this.careData.CasesOnTime * 100).toString() + '%';
+      ).subscribe((res:any)=>{
+        this.careData= res.Result
+        this.mongz= (this.careData.CasesOnTime*100).toString() + '%'
+        this.loading =false;
         this.handleChartsData();
         this.createChart();
-        this.createBarChart();
-      });
-  }
+        this.getRequestsType();
+        this.getRequestsTypesTime();
+         })
+    }
 
-  handleChartsData() {
-    this.AgreedCasesCountByMonth = {
-      labels: this.careData.AgreedCasesCountByMonth.map((res: any) => res.Key),
+    handleChartsData(){
+    this.AgreedCasesCountByMonth=  {
+        labels: this.careData.AgreedCasesCountByMonth.map((res:any)=> res.Key),
+        datasets: [
+          {
+            label: '',
+            data: this.careData.AgreedCasesCountByMonth.map((res:any)=> res.Value),
+            backgroundColor: 'rgb(128 150 180)',
+            borderColor: '#012D6A',
+            drawActiveElementsOnTop: false,
+    
+            fill: true, //
+         
+          },
+        ],
+      };
+    
+    this.CasesCountByMonth = {
+      labels: this.careData.CasesCountByMonth.map((res:any)=> res.Key),
       datasets: [
         {
           label: '',
@@ -397,32 +421,45 @@ export class CareComponent implements OnInit {
           backgroundColor: 'rgb(128 150 180)',
           borderColor: '#012D6A',
           fill: true, //
-          pointRadius: 0, //
-          pointHoverRadius: 0,
+          
         },
       ],
     };
   }
-
-  getRequestsType() {
-    this.http
-      .get(
-        'https://78e85d90-4d6b-4c15-86c8-7303cc6a33a3.mock.pstmn.io/api-gateway-odoo/api/Dashboard/RequestTypes'
-      )
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          console.error('Error fetching request types:', error);
-          return this.mockDataService.getMockRequestTypesData();
-        }),
-        finalize(() => {
-          this.loading = false;
-        })
-      )
-      .subscribe((res: any) => {
-        this.requestsTypes = res.Result;
-      });
+  getRequestsType(){
+    this.http.get("https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/RequestTypes").pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching request types:', error);
+        return this.mockDataService.getMockRequestTypesData();
+      }),
+      finalize(() => {
+        this.loading = false;
+      })
+    ).subscribe((res:any)=>{
+    console.log(res)
+    this.requestsTypes = res.Result
+    })
   }
 
+  getRequestsTypesTime(){
+    this.http.get("https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/RequestTypesTime").pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching request types times:', error);
+        return this.mockDataService.getMockRequestTypesData();
+      }),
+      finalize(() => {
+        this.loading = false;
+      })
+    ).subscribe((res:any)=>{
+    console.log(res)
+    this.requestsTypesTime = res.Result;
+    this.createBarChart();
+
+    })
+  }
+  navigateTODetails(index:number,onTime:boolean,data:any){
+    this.route.navigate(['care/'+index+'/'+onTime+'/'+data])
+  }
   handleFlipSectionEvent($event: any) {
     this.bar = $event;
   }

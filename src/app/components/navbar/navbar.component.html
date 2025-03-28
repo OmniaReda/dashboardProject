@@ -13,11 +13,13 @@
       </button>
       <h1 class="text-white text-[25px] font-bold">
         {{
-          currentPage === "/care-details" || currentPage === "/care"
-            ? "قيادة - رعاية"
+           currentPage === "/"
+            ?"قيادة"
             : currentPage === "/mersal-details"
             ? "قيادة - مرسال"
-            : "قيادة"
+            : 
+           "قيادة - رعاية"
+            
         }}
       </h1>
     </div>
