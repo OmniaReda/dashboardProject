@@ -15,7 +15,14 @@ import { HardshipBarTableComponent } from './components/hardship-bar-table/hards
 const routes: Routes = [
   { path: '', component: LeadershipComponent },
   { path: 'care', component: CareComponent },
-  { path: 'care/:src/:TypeId/:OnTime/:Total', component: TableComponent },
+  {
+    path: 'care/:src/:TypeId/:OnTime/:Total/:parentIndex',
+    component: TableComponent,
+  },
+  {
+    path: 'care/:src/:TypeId/:OnTime/:Total',
+    component: TableComponent,
+  },
   { path: 'mersal-details', component: TableComponent },
   { path: 'login', component: LoginComponent },
   { path: 'imported', component: ImportedComponent },

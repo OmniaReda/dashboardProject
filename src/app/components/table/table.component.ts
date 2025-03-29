@@ -47,6 +47,19 @@ export class TableComponent implements OnInit {
       }
       //// from donught chart
       if (this.src == 3) {
+        this.typeId = event.params.TypeId;
+        this.onTime = event.params.OnTime;
+        this.onTimeValue = this.onTime === 'true' ? 'علي الوقت' : 'متأخره';
+        this.total = event.params.Total;
+        let query = {
+          HardshipTypeId: event.params.parentIndex,
+          OnTime: this.onTime,
+          Status: this.typeId,
+        };
+        this.getDetails(
+          'https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/HardshipTypeDetails',
+          query
+        );
       }
       //// from progress bars
       if (this.src == 4) {

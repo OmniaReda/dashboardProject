@@ -198,7 +198,16 @@ export class HardshipBarComponent implements OnInit, OnChanges {
   }
   navigateToTable(onTime: boolean, index: number, data: number) {
     this.route.navigate([
-      'care/' + 3 + '/' + index + '/' + onTime + '/' + data,
+      'care/' +
+        3 +
+        '/' +
+        index +
+        '/' +
+        onTime +
+        '/' +
+        data +
+        '/' +
+        this.hardshipDataTypes.index,
     ]);
   }
 }
