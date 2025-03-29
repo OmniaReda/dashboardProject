@@ -66,12 +66,11 @@
             </div>
           </div>
           <button
-          (click)="showHardshipPopup('sec2')"
-      
+            (click)="showHardshipPopup('sec2')"
             class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
           >
             <span class="text-[12px] flex-1 text-center">
-              {{requestsTypes?.DataReports[0]?.Label}}
+              {{ requestsTypes?.DataReports[0]?.Label }}
             </span>
             <i
               class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
@@ -86,9 +85,24 @@
               {{ requestsTypes?.DataReports[1]?.Data }}
             </div>
           </div>
-          <p class="text-center p-1 data">
-            {{ requestsTypes?.DataReports[1]?.Label }}
-          </p>
+          <button
+            (click)="
+              showLineChartPopup(
+                2,
+                requestsTypes?.DataReports[1]?.Label,
+                requestsTypes?.DataReports[1]?.Data,
+                'sec4'
+              )
+            "
+            class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+          >
+            <span class="text-[12px] flex-1 text-center">
+              {{ requestsTypes?.DataReports[1]?.Label }}
+            </span>
+            <i
+              class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
+            ></i>
+          </button>
         </div>
         <div
           class="bg-white text-center items-center justify-center border-e overflow-hidden"
@@ -98,9 +112,24 @@
               {{ requestsTypes?.DataReports[2]?.Data }}
             </div>
           </div>
-          <p class="text-center p-1 data">
-            {{ requestsTypes?.DataReports[2]?.Label }}
-          </p>
+          <button
+            (click)="
+              showLineChartPopup(
+                3,
+                requestsTypes?.DataReports[2]?.Label,
+                requestsTypes?.DataReports[2]?.Data,
+                'sec4'
+              )
+            "
+            class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+          >
+            <span class="text-[12px] flex-1 text-center">
+              {{ requestsTypes?.DataReports[2]?.Label }}
+            </span>
+            <i
+              class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
+            ></i>
+          </button>
         </div>
         <div class="bg-white text-center items-center justify-center">
           <div class="pie-chart-4 m-auto mb-3">
@@ -108,9 +137,24 @@
               {{ requestsTypes?.DataReports[3]?.Data }}
             </div>
           </div>
-          <p class="text-center p-1 data h-5">
-            {{ requestsTypes?.DataReports[3]?.Label }}
-          </p>
+          <button
+            (click)="
+              showLineChartPopup(
+                4,
+                requestsTypes?.DataReports[3]?.Label,
+                requestsTypes?.DataReports[3]?.Data,
+                'sec4'
+              )
+            "
+            class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
+          >
+            <span class="text-[12px] flex-1 text-center">
+              {{ requestsTypes?.DataReports[3]?.Label }}
+            </span>
+            <i
+              class="fa-solid fa-angle-left text-[12px] relative top-[1px]"
+            ></i>
+          </button>
         </div>
       </div>
     </div>
@@ -134,31 +178,45 @@
           </div>
         </div>
       </div>
-      <canvas id="myBarChart" class="!h-[380px] !w-full" style="display: block; height: 160px; width: 491px;" ></canvas>
+      <canvas
+        id="myBarChart"
+        class="!h-[380px] !w-full"
+        style="display: block; height: 160px; width: 491px"
+      ></canvas>
     </div>
   </div>
   <!--popup-->
   @if (showHardship) {
-  <div class="flex justify-center" id="sec2" >
+  <div class="flex justify-center" id="sec2">
     <a (click)="showHardship = false; showBar = false">
       <i
         class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
       ></i>
     </a>
   </div>
-  <app-hardship 
-  [hardshipData]="hardshipData"
-    (clickOnData)="showBarPopup($event,'sec3')"
-    />
+  <app-hardship
+    [hardshipData]="hardshipData"
+    (clickOnData)="showBarPopup($event, 'sec3')"
+  />
   } @if (showBar) {
-  <div class="flex justify-center" id="sec3" >
-    <a (click)="showBar = false"   >
+  <div class="flex justify-center" id="sec3">
+    <a (click)="showBar = false">
       <i
         class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
       ></i>
     </a>
   </div>
 
-  <app-hardship-bar  [hardshipDataTypes]="hardshipBarData"></app-hardship-bar>
+  <app-hardship-bar [hardshipDataTypes]="hardshipBarData"></app-hardship-bar>
+  } @if(showlineChart){
+  <div class="flex justify-center" id="sec4">
+    <a (click)="showBar = false">
+      <i
+        class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
+      ></i>
+    </a>
+  </div>
+
+  <app-lineChart [lineChartData]="lineChartData"></app-lineChart>
   }
 </div>

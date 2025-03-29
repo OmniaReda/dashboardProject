@@ -45,7 +45,7 @@ export class TableComponent implements OnInit {
           query
         );
       }
-      //// from donught chart
+      //// from progress bar and dounght child of hardship
       if (this.src == 3) {
         this.typeId = event.params.TypeId;
         this.onTime = event.params.OnTime;
@@ -57,12 +57,25 @@ export class TableComponent implements OnInit {
           Status: this.typeId,
         };
         this.getDetails(
-          'https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/HardshipTypeDetails',
+          'https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/HardshipTypeStatusDetails',
           query
         );
       }
-      //// from progress bars
+      //// from line chart in gharm
       if (this.src == 4) {
+        this.typeId = event.params.TypeId;
+        this.onTime = event.params.OnTime;
+        this.onTimeValue = this.onTime === 'true' ? 'علي الوقت' : 'متأخره';
+        this.total = event.params.Total;
+        let query = {
+          TypeId: event.params.parentIndex,
+          OnTime: this.onTime,
+          Status: Number(this.typeId) + 1,
+        };
+        this.getDetails(
+          'https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/RequestTypeStatusDetails',
+          query
+        );
       }
     });
   }

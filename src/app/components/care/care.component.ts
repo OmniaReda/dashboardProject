@@ -21,11 +21,13 @@ export class CareComponent implements OnInit {
   careData: any = {};
   CasesCountByMonth: any;
   showBar: boolean = false;
+  showlineChart: boolean = false;
   AgreedCasesCountByMonth: any;
   requestsTypes: any;
   mongz: any = '50%';
   hardshipData: any;
   hardshipBarData: any;
+  lineChartData: any;
   requestsTypesTime: any;
   constructor(
     public dialog: MatDialog,
@@ -98,6 +100,22 @@ export class CareComponent implements OnInit {
       index: event.index,
     };
     this.showBar = true;
+  }
+  showLineChartPopup(
+    index: any,
+    label: any,
+    data: any,
+    sectionId: string
+  ): void {
+    this.scrollToSection(sectionId);
+    this.lineChartData = {
+      data: data,
+      label: label,
+      index: index,
+    };
+    this.showBar = false;
+    this.showHardship = false;
+    this.showlineChart = true;
   }
 
   createChart() {
