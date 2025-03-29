@@ -16,15 +16,15 @@ import { Router } from '@angular/router';
 })
 export class CareComponent implements OnInit {
   chart: any;
-  showPopup: boolean = false;
+  showHardship: boolean = false;
   loading = true;
   careData: any = {};
   CasesCountByMonth: any;
+  showBar:boolean=false
   AgreedCasesCountByMonth: any;
   requestsTypes: any;
-  hardshipData: any;
-  bar: any;
   mongz: any = '50%';
+  hardshipData:any;
   requestsTypesTime:any;
   constructor(
     public dialog: MatDialog,
@@ -32,7 +32,6 @@ export class CareComponent implements OnInit {
     private mockDataService: MockDataService,
      private route:Router) {
     Chart.register(...registerables);
-    this.getData();
   }
   ngOnInit(): void {
     this.getData();
@@ -80,125 +79,17 @@ export class CareComponent implements OnInit {
     }, 0);
   }
 
-  handleButtonClick(sectionId: string): void {
+  showHardshipPopup(sectionId: string,
+    
+  ): void {
     this.scrollToSection(sectionId);
-    this.openPopup();
+    this.hardshipData = {data:this.requestsTypes?.DataReports[0]?.Data ,label:this.requestsTypes?.DataReports[0]?.Label}
+    this.showHardship = true
   }
 
-  openPopup() {
-    // this.scrollToSection('sec2');
-    this.hardshipData = {
-      popupDetails: {
-        title: 'ضائقة',
-        subTitle: 'انواع طلبات الضائقة',
-        total: '205',
-        progressBars: [
-          {
-            title: 'مساعدة الزواج',
-            count: 50,
-            p1: { color: '#012D6A', count: '33' },
-            p2: { color: '#7d91b1', count: '27' },
-          },
-          {
-            title: 'مساعدة مسكن',
-            count: 19,
-            p1: { color: '#85BBD7', count: '33' },
-            p2: { color: '#85BBD7', count: '27' },
-          },
-          {
-            title: 'مصاريف العلاج',
-            count: 1,
-            p1: { color: '#d6d6d4', count: '33' },
-            p2: { color: '#e5e6e8', count: '27' },
-          },
-          {
-            title: ' مساعدات الدراسة',
-            count: 30,
-            p1: { color: '#b86139', count: '33' },
-            p2: { color: '#d5ab97', count: '27' },
-          },
-          {
-            title: ' مشاريع الاسرة المنتجة',
-            count: 25,
-            p1: { color: '#bda15e', count: '33' },
-            p2: { color: '#d9ccab', count: '27' },
-          },
-          {
-            title: 'مساعدات المقطوعة',
-            count: 25,
-            p1: { color: '#545452', count: '33' },
-            p2: { color: '#a4a6a5', count: '27' },
-          },
-        ],
-      },
-      chartOptions: {
-        type: 'doughnut',
-        data: {
-          labels: [''],
-          datasets: [
-            {
-              label: 'عدد الحالات',
-              data: [50, 30, 19, 25, 1, 25],
-              backgroundColor: [
-                '#012D6A',
-                '#BB6038',
-                '#85BBD8',
-                '#C0A25D',
-                '#D6D6D6',
-                '#545453',
-              ],
-              borderColor: [
-                '#012D6A',
-                '#BB6038',
-                '#85BBD8',
-                '#C0A25D',
-                '#D6D6D6',
-                '#545453',
-              ],
-              hoverBackgroundColor: [
-                '#012D6A',
-                '#BB6038',
-                '#85BBD8',
-                '#C0A25D',
-                '#D6D6D6',
-                '#545453',
-              ],
-              hoverBorderColor: [
-                '#012D6A',
-                '#BB6038',
-                '#85BBD8',
-                '#C0A25D',
-                '#D6D6D6',
-                '#545453',
-              ],
-              hoverBorderWidth: 16,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            datalabels: {
-              color: '#fff',
-              formatter: (value: number, ctx: any) => value,
-              font: {
-                weight: 'bold',
-                size:
-                  window.innerWidth < 526
-                    ? 12
-                    : window.innerWidth < 990
-                    ? 16
-                    : 20,
-              },
-              textAlign: 'center',
-            },
-          },
-        },
-      },
-    };
+  showBarPopup(event:any,sectionId: string): void {
+    this.scrollToSection(sectionId);
+    this.showBar = true
   }
 
   createChart() {
@@ -306,12 +197,10 @@ export class CareComponent implements OnInit {
       },
       options: {
         onClick: (e, item,chartines)=> {
-          console.log(item)
           if (item.length) {
             const data = chartines.data.datasets[item[0].datasetIndex].data[item[0].index];
             const index = chartines.data.datasets[item[0].datasetIndex].label;
             const label = item[0].index;
-            console.log( data,label,index);
             this.navigateTODetails(item[0].index,chartines.data.datasets[item[0].datasetIndex].label!='متأخرة',data)
           }},
              scales: {
@@ -436,7 +325,6 @@ export class CareComponent implements OnInit {
         this.loading = false;
       })
     ).subscribe((res:any)=>{
-    console.log(res)
     this.requestsTypes = res.Result
     })
   }
@@ -451,7 +339,6 @@ export class CareComponent implements OnInit {
         this.loading = false;
       })
     ).subscribe((res:any)=>{
-    console.log(res)
     this.requestsTypesTime = res.Result;
     this.createBarChart();
 
@@ -460,10 +347,6 @@ export class CareComponent implements OnInit {
   navigateTODetails(index:number,onTime:boolean,data:any){
     this.route.navigate(['care/'+index+'/'+onTime+'/'+data])
   }
-  handleFlipSectionEvent($event: any) {
-    this.bar = $event;
-  }
-
   wrapLabels(labels: string[]): string[][] {
     return labels.map((label) => {
       if (label.length <= 12) {
@@ -490,4 +373,5 @@ export class CareComponent implements OnInit {
       return wrappedLines;
     });
   }
+  
 }

@@ -3,17 +3,18 @@
     class="border-b-2 py-5 px-3 flex items-center justify-center border-[#f5f7fa]"
   >
     <h2 class="font-bold text-[#012D6A] text-[26px]">
-      {{ hardshipData.popupDetails.title }}
+     {{ hardshipData.label }}
     </h2>
   </div>
   <div class="flex lg:flex-col p-8">
     <div class="w-[40%] lg:w-full">
       <div class="flex items-center justify-center gap-x-5 mb-12">
         <h1 class="text-[#012D6A] text-[16px]">
-          {{ hardshipData.popupDetails.subTitle }}
+          انواع طلبات 
+          {{ hardshipData.label }}
         </h1>
         <h3 class="text-[#012D6A] font-bold text-[25px]">
-          {{ hardshipData.popupDetails.total }}
+          {{ hardshipData.data}}
         </h3>
       </div>
       <div class="p-4">
@@ -23,7 +24,7 @@
         ></canvas>
       </div>
     </div>
-    <div class="w-[60%] lg:w-full">
+    <div class="w-[60%] lg:w-full" *ngIf="progressBars">
       <div class="flex items-center gap-x-4 justify-end mb-12">
         <div class="flex items-center gap-x-2">
           <span class="w-[10px] h-[10px] rounded-full bg-black"></span>
@@ -34,12 +35,12 @@
           <span class="text-[12px] text-[#012D6A]">متاخر</span>
         </div>
       </div>
-      <div
+     <div
         *ngFor="
-          let bar of hardshipData.popupDetails.progressBars;
+          let bar of progressBars;
           let i = index
         "
-        (click)="flipSection(bar)"
+        (click)="clickOnSpeceficData(i,bar.title , bar.count)"
         class="bg-[#f5f7fa] rounded-[10px] py-1.5 px-4 flex items-center mb-4 cursor-pointer"
       >
         <div class="flex items-center gap-x-3">
@@ -51,23 +52,23 @@
         <h3 class="text-[#012D6A] font-bold text-[19px] w-[110px] text-center">
           {{ bar.count }}
         </h3>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-x-3">
+        <div class="flex flex-col w-full">
+          <div class="flex items-center gap-x-3  w-full">
             <div
-              class="w-[350px] h-[10px]"
-              [ngStyle]="{ 'background-color': bar.p1.color }"
+              class=" h-[10px]"
+              [ngStyle]="{ 'background-color': bar.p1.color, 'width':getpercentage(bar.p1.count ,bar.count ) }"
             ></div>
             <h1 class="text-[#012D6A] font-bold">{{ bar.p1.count }}</h1>
           </div>
           <div class="flex items-center gap-x-3">
             <div
-              class="w-[250px] h-[10px] opacity-50"
-              [ngStyle]="{ 'background-color': bar.p1.color }"
+              class=" h-[10px] opacity-50"
+              [ngStyle]="{ 'background-color': bar.p2.color , 'width': getpercentage(bar.p2.count ,bar.count )}"
             ></div>
             <h1 class="text-[#012D6A] font-bold">{{ bar.p2.count }}</h1>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   </div>
 </div>

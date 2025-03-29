@@ -66,7 +66,7 @@
             </div>
           </div>
           <button
-          (click)="handleButtonClick('sec2')"
+          (click)="showHardshipPopup('sec2')"
       
             class="w-[112px] h-[35px] bg-[#f5f7fa] px-2.5 text-[#012d6a] hover:bg-[#012d6a] hover:text-white rounded-[10px] flex items-center justify-between m-auto transition duration-300 ease-in-out"
           >
@@ -138,28 +138,27 @@
     </div>
   </div>
   <!--popup-->
-  @if (hardshipData) {
+  @if (showHardship) {
   <div class="flex justify-center" id="sec2" >
-    <a (click)="hardshipData = null; bar = null">
+    <a (click)="showHardship = false; showBar = false">
       <i
         class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
       ></i>
     </a>
   </div>
-  <app-hardship
-    [hardshipData]="hardshipData"
-    (flipSectionEvent)="handleFlipSectionEvent($event)"
-    (click)="handleButtonClick('sec3')"
+  <app-hardship 
+  [hardshipData]="hardshipData"
+    (clickOnData)="showBarPopup($event,'sec3')"
     />
-  } @if (bar) {
+  } @if (showBar) {
   <div class="flex justify-center" id="sec3" >
-    <a (click)="bar = null"   >
+    <a (click)="showBar = false"   >
       <i
         class="fa fa-times px-3 py-2 rounded-[50px] cursor-pointer text-[#012D6A] text-xl bg-white"
       ></i>
     </a>
   </div>
 
-  <app-hardship-bar [barSpecifications]="bar"   />
+  <app-hardship-bar></app-hardship-bar>
   }
 </div>

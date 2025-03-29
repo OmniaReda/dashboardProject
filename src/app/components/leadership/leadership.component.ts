@@ -43,7 +43,6 @@ export class LeadershipComponent {
 
   constructor() {
     this.dashboardService.getHeaderStatistics().then((list: any) => {
-      console.log(list.Result);
       if (list.Result)
       {
         this.careData = list.Result;
@@ -56,11 +55,7 @@ export class LeadershipComponent {
     this.dashboardService.getIncoming().then((incoming: any) => {
       this.dashboardService.getOutgoing().then((outgoing: any) => {
         this.dashboardService.getInternal().then((internal: any) => {
-        
-          console.log(incoming);
-          console.log(outgoing);
-          console.log(internal);
-          
+                
           this.bookData.totalbook = 0;
           this.bookData.incomeValue = 0;
           this.bookData.outgoingValue = 0;

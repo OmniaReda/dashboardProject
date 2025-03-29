@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit{
     );
   }
     createBarChart() {
-      this.chart = new Chart('myBarChart', {
+      this.chart = new Chart('dashboardBar', {
         type: 'bar',
         data: {
           labels: [ 'قيد المتابعة', 'منجز',"مرفوض"],

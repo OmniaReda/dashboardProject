@@ -19,7 +19,6 @@ export class TableComponent implements OnInit {
   }
   ngOnInit() {
     this.router.paramMap.subscribe((event: any) => {
-      console.log(event.params)
       this.typeId=event.params.TypeId
       this.onTime=event.params.OnTime
       this.onTimeValue = this.onTime === 'true' ? "علي الوقت":"متأخره"
