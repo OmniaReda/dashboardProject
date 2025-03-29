@@ -27,15 +27,12 @@ import { ProfileIphoneComponent } from './components/profile-iphone/profile-ipho
 import { SettingIphoneComponent } from './components/setting-iphone/setting-iphone.component';
 import { EditProfileIphoneComponent } from './components/edit-profile-iphone/edit-profile-iphone.component';
 import { FilesIphoneComponent } from './components/files-iphone/files-iphone.component';
-import {
-  HttpClient,
-  HttpClientModule,
-  provideHttpClient,
-} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { HardshipComponent } from './components/hardship/hardship.component';
 import { HardshipBarComponent } from './components/hardship-bar/hardship-bar.component';
 import { HardshipBarTableComponent } from './components/hardship-bar-table/hardship-bar-table.component';
+import { LineChartComponent } from './components/lineChart-popup/lineChart-popup.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +59,7 @@ import { HardshipBarTableComponent } from './components/hardship-bar-table/hards
     HardshipComponent,
     HardshipBarComponent,
     HardshipBarTableComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,
