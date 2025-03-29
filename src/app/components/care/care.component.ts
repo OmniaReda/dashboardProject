@@ -25,6 +25,7 @@ export class CareComponent implements OnInit {
   requestsTypes: any;
   mongz: any = '50%';
   hardshipData: any;
+  hardshipBarData: any;
   requestsTypesTime: any;
   constructor(
     public dialog: MatDialog,
@@ -91,6 +92,11 @@ export class CareComponent implements OnInit {
 
   showBarPopup(event: any, sectionId: string): void {
     this.scrollToSection(sectionId);
+    this.hardshipBarData = {
+      data: event.data,
+      label: event.label,
+      index: event.index,
+    };
     this.showBar = true;
   }
 
