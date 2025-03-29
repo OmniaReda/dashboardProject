@@ -8,29 +8,55 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnInit {
-  careDetails :any;
-  total:any;
-  onTime!:string;
-  typeId!:number;
-  dataIsLoaded:boolean=false;
-  onTimeValue:string = 'متأخره'
-  constructor(private router: ActivatedRoute,private http:HttpClient) {
+  careDetails: any;
+  total: any;
+  onTime!: string;
+  typeId!: number;
+  src: any;
+  dataIsLoaded: boolean = false;
+  onTimeValue: string = 'متأخره';
+  constructor(private router: ActivatedRoute, private http: HttpClient) {
     // this.careDetails = this.router.
   }
   ngOnInit() {
     this.router.paramMap.subscribe((event: any) => {
-      this.typeId=event.params.TypeId
-      this.onTime=event.params.OnTime
-      this.onTimeValue = this.onTime === 'true' ? "علي الوقت":"متأخره"
-      this.total=event.params.Total
-      let query ={TypeId:this.typeId,OnTime:this.onTime}
-      this.getDetails(query)
+      this.src = event.params.src;
+      /// from bar chart
+      if (this.src == 1) {
+        this.typeId = event.params.TypeId;
+        this.onTime = event.params.OnTime;
+        this.onTimeValue = this.onTime === 'true' ? 'علي الوقت' : 'متأخره';
+        this.total = event.params.Total;
+        let query = { TypeId: this.typeId, OnTime: this.onTime };
+        this.getDetails(
+          'https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/RequestTypeDetails',
+          query
+        );
+      }
+      //// from progress bars
+      if (this.src == 2) {
+        this.typeId = event.params.TypeId;
+        this.onTime = event.params.OnTime;
+        this.onTimeValue = this.onTime === 'true' ? 'علي الوقت' : 'متأخره';
+        this.total = event.params.Total;
+        let query = { HardshipTypeId: this.typeId, OnTime: this.onTime };
+        this.getDetails(
+          'https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/HardshipTypeDetails',
+          query
+        );
+      }
+      //// from donught chart
+      if (this.src == 3) {
+      }
+      //// from progress bars
+      if (this.src == 4) {
+      }
     });
   }
-  getDetails(queryParams:any){
-    this.http.get(" https://quilled-autumn-move.glitch.me/api-gateway-odoo/api/Dashboard/RequestTypeDetails",{params:queryParams}).subscribe((res:any)=>{
-      this.careDetails= res.Result
-      this.dataIsLoaded = true
-    })
+  getDetails(apiPath: string, queryParams: any) {
+    this.http.get(apiPath, { params: queryParams }).subscribe((res: any) => {
+      this.careDetails = res.Result;
+      this.dataIsLoaded = true;
+    });
   }
 }

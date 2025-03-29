@@ -54,14 +54,14 @@
         </h3>
         <div class="flex flex-col w-full">
           <div class="flex items-center gap-x-3  w-full">
-            <div
+            <div (click)="navigateToTable(true,i,bar.p1.count)"
               class=" h-[10px]"
               [ngStyle]="{ 'background-color': bar.p1.color, 'width':getpercentage(bar.p1.count ,bar.count ) }"
             ></div>
             <h1 class="text-[#012D6A] font-bold">{{ bar.p1.count }}</h1>
           </div>
           <div class="flex items-center gap-x-3">
-            <div
+            <div (click)="navigateToTable(false,i,bar.p2.count)"
               class=" h-[10px] opacity-50"
               [ngStyle]="{ 'background-color': bar.p2.color , 'width': getpercentage(bar.p2.count ,bar.count )}"
             ></div>
