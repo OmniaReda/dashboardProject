@@ -1,0 +1,179 @@
+.pie-chart,
+.pie-chart-specialization,
+.pie-chart-radio {
+  position: relative;
+  width: 163px;
+  height: 163px;
+  border-radius: 100%;
+  border: white 6px solid;
+  background: conic-gradient(#012d6a 0% 87.8%, #f5f7fa 87.8% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.pie-chart-remaining {
+  position: relative;
+  width: 163px;
+  height: 163px;
+  border-radius: 100%;
+  border: white 6px solid;
+  background: conic-gradient(#bfa25d 0% var(--remaining), #e0e0e0 var(--remaining) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.pie-chart-completed {
+  position: relative;
+  width: 163px;
+  height: 163px;
+  border-radius: 100%;
+  border: white 6px solid;
+  background: conic-gradient(#012d6a 0% var(--completed), #f5f7fa var(--completed) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.pie-chart-incoming {
+  position: relative;
+  width: 163px;
+  height: 163px;
+  border-radius: 100%;
+  border: white 6px solid;
+  background: conic-gradient(#012d6a 0% var(--incoming), #f5f7fa var(--incoming) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.pie-chart-outgoing {
+  position: relative;
+  width: 163px;
+  height: 163px;
+  border-radius: 100%;
+  border: white 6px solid;
+  background: conic-gradient(#bfa25d 0% var(--outgoing), #f5f7fa var(--outgoing) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.pie-chart-interior {
+  position: relative;
+  width: 163px;
+  height: 163px;
+  border-radius: 100%;
+  border: white 6px solid;
+  background: conic-gradient(#fc7242 0% var(--interior), #f5f7fa var(--interior) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.pie-chart-inner {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 29px;
+  font-weight: bold;
+  color: #012d6a;
+}
+
+.pie-chart-ontime {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 100%;
+  border: white 1px solid;
+  background: conic-gradient(#012d6a 0% var(--ontime), #bb3837 var(--ontime) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pie-chart-ontime-inner {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  background: white;
+  border-radius: 50%;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-chart-book {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 100%;
+  border: white 1px solid;
+  background: conic-gradient(#012d6a 0% var(--book), #bb3837 var(--book) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pie-chart-book-inner {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  background: white;
+  border-radius: 50%;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-chart-resources {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 100%;
+  border: white 1px solid;
+  background: conic-gradient(#012d6a 0% var(--resources), #bb3837 var(--resources) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pie-chart-resources-inner {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  background: white;
+  border-radius: 50%;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+.pie-chart-outgoing .pie-chart-inner,
+.pie-chart-radio .pie-chart-inner,
+.pie-chart-remaining .pie-chart-inner {
+  color: #bfa25d;
+}
+.pie-chart-interior .pie-chart-inner {
+  color: #fc7242;
+}
+.pie-chart-specialization {
+  background: conic-gradient(#012d6a 0% 53%, #f5f7fa 54% 100%);
+}
+.pie-chart-radio {
+  background: conic-gradient(#bfa25d 0% 46%, #f5f7fa 47% 100%);
+}

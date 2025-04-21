@@ -1,0 +1,53 @@
+<div class="h-screen bg-[#022d6a] flex items-center justify-center overflow-y-auto">
+  <div class="w-full">
+    <div class="mb-[60px] text-center">
+      <img src="assets/img/logo.png" class="m-auto" alt="" />
+      <h4 class="text-white">جاسم بن محمد بن ثاني</h4>
+    </div>
+    <form action="" class="px-7 max-w-[400px] m-auto">
+      <div class="relative mb-7">
+        <input
+          type="text"
+          required
+          id="name"
+          name="name"
+          class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#94b6e4] px-4 text-[12px] outline-none"
+        />
+        <label
+          for="name"
+          class="absolute bg-[#022d6a] py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#94b6e4] text-[12px]"
+          >المستخدم</label
+        >
+      </div>
+      <div class="relative mb-7">
+        <div class="relative">
+          <input
+            [type]="passwordFieldType"
+            required
+            id="password"
+            name="password"
+            class="bg-transparent border border-[#94b6e4] rounded-[5px] h-[50px] w-full relative text-[#94b6e4] px-4 text-[12px] outline-none"
+          />
+          <label
+            for="password"
+            class="absolute bg-[#022d6a] py-1 px-3 top-[10px] rtl:right-[10px] ltr:left-[10px] text-[#94b6e4] text-[12px]"
+            >كلمة المرور</label
+          >
+          <a
+            class="absolute top-[50%] translate-y-[-50%] rtl:left-[10px] ltr:rtl:right-[10px]"
+          >
+            <i
+              class="fa-regular text-[#94b6e4]"
+              [ngClass]="
+                passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'
+              "
+              (click)="togglePasswordVisibility()"
+            ></i>
+          </a>
+        </div>
+      </div>
+      <button class="w-full h-[50px] bg-main text-[#f5f7fa] rounded-md font-bold text-[12px] mt-2">تسجيل الدخول</button>
+      <a href="" class="text-[#94b6e4] text-[13px] text-center block mt-4">هل نسيت كلمة المرور ؟</a>
+    </form>
+  </div>
+</div>

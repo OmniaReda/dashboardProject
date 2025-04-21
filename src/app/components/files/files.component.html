@@ -1,0 +1,288 @@
+<div
+  class="fixed z-[99] bottom-0 right-0 w-full h-full bg-white rounded-ss-lg rounded-se-lg p-6 translate-y-[100%] transition duration-700 ease-in-out"
+  [class.!translate-y-0]="open"
+>
+  <!-- Head -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <img src="/assets/img/logo.png" class="max-w-[50px]" alt="" />
+      <h5 class="text-[12px] font-bold max-w-[90px] text-[#022d6a]">
+        جاسم بن محمد بن ثاني
+      </h5>
+    </div>
+    <button
+      (click)="toggleAction()"
+      class="flex items-center justify-center flex-col gap-1 relative top-[-15px]"
+    >
+      <span class="bg-[#022d6a] h-[1px] w-[25px] block"></span>
+      <span class="bg-[#022d6a] h-[1px] w-[15px] block"></span>
+    </button>
+    <button
+      class="w-[110px] h-[35px] flex items-center justify-center gap-1 rounded-md text-white bg-[#042d65]"
+    >
+      <i class="fa-solid fa-plus text-white text-[10px] relative top-[1px]"></i>
+      <span class="text-white text-[12px] font-bold">جديد</span>
+    </button>
+  </div>
+  <!-- Body -->
+  <div
+    class="flex items-center justify-center flex-wrap gap-x-3 gap-y-7 my-[50px]"
+  >
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/pdf.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.pdf
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/docx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.docx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/xlsx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.xlsx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/pdf.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.pdf
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/docx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.docx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/xlsx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.xlsx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/xlsx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.xlsx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/xlsx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.xlsx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/xlsx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.xlsx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/pdf.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.pdf
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/docx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.docx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/xlsx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.xlsx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/pdf.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.pdf
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/docx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.docx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/docx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.docx
+      </h4>
+    </div>
+    <div class="text-center">
+      <div
+        class="w-[100%] h-[90px] flex items-center justify-center bg-[#dfe4ea] rounded-md p-3"
+      >
+        <img
+          src="/assets/icons/docx.svg"
+          class="max-w-[60px] lgSM:max-w-[40px]"
+          alt=""
+        />
+      </div>
+      <h4
+        class="text-[11px] text-[#243b5a] mt-1 w-[100px] lgSM:w-[80px] lgSM:text-[10px] overflow-hidden whitespace-nowrap text-ellipsis"
+      >
+        تقرير اجتماعي.docx
+      </h4>
+    </div>
+  </div>
+</div>
