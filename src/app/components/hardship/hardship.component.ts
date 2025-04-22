@@ -194,9 +194,9 @@ export class HardshipComponent implements OnInit {
     let percentage = (count / total) * 100;
     return percentage + '%';
   }
-  navigateToTable(onTime: boolean, index: number, data: number) {
+  navigateToTable(onTime: boolean, index: number, data: number, label: any) {
     this.route.navigate([
-      'care/' + 2 + '/' + index + '/' + onTime + '/' + data,
+      'care/' + 2 + '/' + index + '/' + onTime + '/' + data + '/' + label,
     ]);
   }
 }

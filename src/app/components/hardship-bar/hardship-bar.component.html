@@ -51,7 +51,7 @@
         <div class="flex flex-col w-full">
           <div class="flex items-center gap-x-3 w-full">
             <div
-              (click)="navigateToTable(true, i, bar.p1.count)"
+              (click)="navigateToTable(true, i, bar.p1.count, bar.title)"
               class="h-[10px]"
               [ngStyle]="{
                 'background-color': bar.p1.color,
@@ -62,7 +62,7 @@
           </div>
           <div class="flex items-center gap-x-3">
             <div
-              (click)="navigateToTable(false, i, bar.p2.count)"
+              (click)="navigateToTable(false, i, bar.p2.count, bar.title)"
               class="h-[10px] opacity-50"
               [ngStyle]="{
                 'background-color': bar.p2.color,

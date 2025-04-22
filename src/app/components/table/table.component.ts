@@ -14,6 +14,7 @@ export class TableComponent implements OnInit {
   onTime!: string;
   typeId!: number;
   src: any;
+  label: any;
   dataIsLoaded: boolean = false;
   onTimeValue: string = 'متأخره';
   sortColumn: string = '';
@@ -31,6 +32,7 @@ export class TableComponent implements OnInit {
         this.onTime = event.params.OnTime;
         this.onTimeValue = this.onTime === 'true' ? 'على الوقت' : 'متأخره';
         this.total = event.params.Total;
+        this.label = event.params.Label;
         let query = { TypeId: this.typeId, OnTime: this.onTime };
         this.getDetails(
           this.baseUrl + '/api-gateway-odoo/api/Dashboard/RequestTypeDetails',

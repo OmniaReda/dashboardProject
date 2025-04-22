@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: '', component: LeadershipComponent },
   { path: 'care', component: CareComponent },
   {
-    path: 'care/:src/:TypeId/:OnTime/:Total/:parentIndex',
+    path: 'care/:src/:TypeId/:OnTime/:Total/:Label/:parentIndex',
     component: TableComponent,
   },
   {
-    path: 'care/:src/:TypeId/:OnTime/:Total',
+    path: 'care/:src/:TypeId/:OnTime/:Total/:Label',
     component: TableComponent,
   },
   { path: 'mersal-details', component: TableComponent },

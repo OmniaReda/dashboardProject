@@ -130,7 +130,8 @@ export class LineChartComponent implements OnInit, OnChanges {
             this.navigateToTable(
               chartines.data.datasets[item[0].datasetIndex].label != 'متأخرة',
               item[0].index,
-              data
+              data,
+              chartines.data.labels![item[0].index]
             );
           }
         },
@@ -196,7 +197,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       });
   }
 
-  navigateToTable(onTime: boolean, index: number, data: any) {
+  navigateToTable(onTime: boolean, index: number, data: any, label: any) {
     this.route.navigate([
       'care/' +
         4 +
@@ -206,6 +207,8 @@ export class LineChartComponent implements OnInit, OnChanges {
         onTime +
         '/' +
         data +
+        '/' +
+        label +
         '/' +
         this.lineChartData.index,
     ]);
