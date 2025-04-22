@@ -57,6 +57,7 @@ export class TableComponent implements OnInit {
         this.onTime = event.params.OnTime;
         this.onTimeValue = this.onTime === 'true' ? 'على الوقت' : 'متأخره';
         this.total = event.params.Total;
+        this.label = event.params.Label;
         let query = { HardshipTypeId: this.typeId, OnTime: this.onTime };
         this.getDetails(
           this.baseUrl + '/api-gateway-odoo/api/Dashboard/HardshipTypeDetails',
@@ -69,6 +70,8 @@ export class TableComponent implements OnInit {
         this.onTime = event.params.OnTime;
         this.onTimeValue = this.onTime === 'true' ? 'على الوقت' : 'متأخره';
         this.total = event.params.Total;
+        this.label = event.params.Label;
+
         let query = {
           HardshipTypeId: event.params.parentIndex,
           OnTime: this.onTime,
@@ -86,6 +89,8 @@ export class TableComponent implements OnInit {
         this.onTime = event.params.OnTime;
         this.onTimeValue = this.onTime === 'true' ? 'على الوقت' : 'متأخره';
         this.total = event.params.Total;
+        this.label = event.params.Label;
+
         let query = {
           TypeId: event.params.parentIndex,
           OnTime: this.onTime,
