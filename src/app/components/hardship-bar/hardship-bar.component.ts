@@ -130,7 +130,7 @@ export class HardshipBarComponent implements OnInit, OnChanges {
   }
 
   clickOnSpeceficData(index: any, label: any, data: any) {
-    this.clickOnData.emit({ index: index, label: label, data: data });
+    this.navigateToTable(null, index, data, label);
   }
 
   // getDonughtData() {
@@ -246,7 +246,7 @@ export class HardshipBarComponent implements OnInit, OnChanges {
     let percentage = (count / total) * 100;
     return percentage + '%';
   }
-  navigateToTable(onTime: boolean, index: number, data: number, label: any) {
+  navigateToTable(onTime: any, index: number, data: number, label: any) {
     this.route.navigate([
       'care/' +
         3 +
