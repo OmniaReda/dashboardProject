@@ -9,6 +9,7 @@ export class DashboardService {
   // private baseUrl = 'https://quilled-autumn-move.glitch.me';
   private baseUrl = environment.baseUrl;
   public filteValue: Subject<any> = new Subject();
+  public openedPopups: any = [];
   async getHeaderStatistics() {
     const data = await fetch(
       `${this.baseUrl}/api-gateway-odoo/api/Statistics/CasesStatistics`

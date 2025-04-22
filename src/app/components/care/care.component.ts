@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Chart, registerables, scales } from 'chart.js';
 import { MatDialog } from '@angular/material/dialog';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -9,6 +9,7 @@ import { MockDataService } from '../../mocks/mock-care.service';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environment';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-care',
@@ -35,14 +36,27 @@ export class CareComponent implements OnInit {
     public dialog: MatDialog,
     private http: HttpClient,
     private mockDataService: MockDataService,
-    private route: Router
+    private route: Router,
+    private dashService: DashboardService
   ) {
     Chart.register(...registerables);
   }
+
   ngOnInit(): void {
     this.getData();
   }
-
+  checkOpenedDialogs() {
+    let openedPopups = this.dashService.openedPopups;
+    if (openedPopups.length > 0) {
+      for (let i = 0; i < openedPopups.length; i++)
+        this.runMethod(openedPopups[i].method, openedPopups[i].data);
+    }
+  }
+  runMethod(methodName: string, args: any) {
+    if (methodName && typeof (this as any)[methodName] === 'function') {
+      (this as any)[methodName](...args);
+    }
+  }
   // handleButtonClick(): void {
   //   setTimeout(() => {
   //     this.scrollToSections3(['sec3']);
@@ -93,6 +107,10 @@ export class CareComponent implements OnInit {
     };
     this.showlineChart = false;
     this.showHardship = true;
+
+    this.dashService.openedPopups = [
+      { method: 'showHardshipPopup', data: ['sec2'] },
+    ];
   }
 
   showBarPopup(event: any, sectionId: string): void {
@@ -103,6 +121,10 @@ export class CareComponent implements OnInit {
       index: event.index,
     };
     this.showBar = true;
+    this.dashService.openedPopups.push({
+      method: 'showBarPopup',
+      data: [event, 'sec2'],
+    });
   }
   showLineChartPopup(
     index: any,
@@ -119,6 +141,9 @@ export class CareComponent implements OnInit {
     this.showBar = false;
     this.showHardship = false;
     this.showlineChart = true;
+    this.dashService.openedPopups = [
+      { method: 'showLineChartPopup', data: [index, label, data, 'sec4'] },
+    ];
   }
 
   createChart() {
@@ -394,6 +419,7 @@ export class CareComponent implements OnInit {
       )
       .subscribe((res: any) => {
         this.requestsTypes = res.Result;
+        this.checkOpenedDialogs();
       });
   }
 
