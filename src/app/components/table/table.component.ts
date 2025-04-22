@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from '../../../../environment';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-table',
@@ -20,10 +21,21 @@ export class TableComponent implements OnInit {
   sortColumn: string = '';
   sortDirection: 'asc' | 'desc' = 'asc';
   private baseUrl = environment.baseUrl;
-  constructor(private router: ActivatedRoute, private http: HttpClient) {
+  constructor(
+    private router: ActivatedRoute,
+    private http: HttpClient,
+    private dashService: DashboardService
+  ) {
     // this.careDetails = this.router.
   }
   ngOnInit() {
+    this.dashService.filteValue.subscribe((res) => {
+      this.careDetails.filteredData = this.careDetails.Data.filter((obj: any) =>
+        Object.values(obj).some((val) =>
+          String(val).toLowerCase().includes(res)
+        )
+      );
+    });
     this.router.paramMap.subscribe((event: any) => {
       this.src = event.params.src;
       /// from bar chart
@@ -90,6 +102,7 @@ export class TableComponent implements OnInit {
   getDetails(apiPath: string, queryParams: any) {
     this.http.get(apiPath, { params: queryParams }).subscribe((res: any) => {
       this.careDetails = res.Result;
+      this.careDetails.filteredData = res.Result.Data;
       this.sortTable('ApplyingDate');
       this.dataIsLoaded = true;
     });

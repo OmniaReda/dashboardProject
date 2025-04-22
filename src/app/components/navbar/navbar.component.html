@@ -32,6 +32,7 @@
       type="search"
       class="bg-transparent text-white"
       placeholder="بحث"
+      (keydown.enter)="filter($event)"
       style="width: 100%; outline: none"
     />
   </div>

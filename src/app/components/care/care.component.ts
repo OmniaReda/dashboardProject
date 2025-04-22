@@ -259,7 +259,6 @@ export class CareComponent implements OnInit {
               chartines.data.datasets[item[0].datasetIndex].data[item[0].index];
             const index = chartines.data.datasets[item[0].datasetIndex].label;
             const label = item[0].index;
-            console.log(item, chartines.data.labels, item[0].index);
             this.navigateTODetails(
               item[0].index,
               chartines.data.datasets[item[0].datasetIndex].label != 'متأخرة',

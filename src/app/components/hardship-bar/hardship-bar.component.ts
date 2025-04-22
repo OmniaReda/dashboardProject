@@ -44,8 +44,6 @@ export class HardshipBarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log(this.hardshipDataTypes);
-
     this.getDonughtData();
   }
 
@@ -206,7 +204,6 @@ export class HardshipBarComponent implements OnInit, OnChanges {
       )
       .subscribe((res: any) => {
         this.donughtData = res.Result;
-        console.log('testOmar', this.donughtData);
         this.createDoughnutChart();
         this.getBarData();
       });

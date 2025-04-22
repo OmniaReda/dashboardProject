@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,11 @@ import { Location } from '@angular/common';
 export class NavbarComponent implements OnInit {
   currentPage: string = '';
   previousPage: string = '';
-  constructor(private router: Router, private location: Location) {}
+  constructor(
+    private router: Router,
+    private location: Location,
+    private dashService: DashboardService
+  ) {}
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -25,5 +30,7 @@ export class NavbarComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-  filter(value: string) {}
+  filter(event: any) {
+    this.dashService.filteValue.next((event.target as HTMLInputElement).value);
+  }
 }
