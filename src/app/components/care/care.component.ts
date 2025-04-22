@@ -91,6 +91,7 @@ export class CareComponent implements OnInit {
       data: this.requestsTypes?.DataReports[0]?.Data,
       label: this.requestsTypes?.DataReports[0]?.Label,
     };
+    this.showlineChart = false;
     this.showHardship = true;
   }
 
